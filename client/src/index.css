@@ -15,53 +15,182 @@ html[data-font-size="x-large"] {
   font-size: 21px;
 }
 
-/* High Contrast Mode Styles (WCAG 2.1 AAA Compliant) */
-html.high-contrast {
-  filter: contrast(125%);
-}
+/* ==========================================================================
+   HIGH CONTRAST MODE (WCAG 2.1 AAA COMPLIANT - MAXIMUM LEGIBILITY)
+   ========================================================================== */
 
+html.high-contrast,
 html.high-contrast body {
   background-color: #000000 !important;
   color: #ffffff !important;
 }
 
-html.high-contrast .bg-white {
-  background-color: #121212 !important;
+/* 1. Global Text Visibility in High Contrast */
+html.high-contrast h1,
+html.high-contrast h2,
+html.high-contrast h3,
+html.high-contrast h4,
+html.high-contrast h5,
+html.high-contrast h6,
+html.high-contrast p,
+html.high-contrast span,
+html.high-contrast label,
+html.high-contrast li,
+html.high-contrast div {
   color: #ffffff !important;
-  border: 2px solid #ffffff !important;
 }
 
-html.high-contrast .bg-slate-50,
-html.high-contrast .bg-slate-100 {
-  background-color: #0a0a0a !important;
-  color: #ffffff !important;
-}
-
+html.high-contrast .text-slate-900,
+html.high-contrast .text-slate-800,
+html.high-contrast .text-slate-700,
 html.high-contrast .text-slate-600,
 html.high-contrast .text-slate-500,
-html.high-contrast .text-slate-700 {
-  color: #e2e8f0 !important;
+html.high-contrast .text-slate-400,
+html.high-contrast .text-indigo-950,
+html.high-contrast .text-indigo-900,
+html.high-contrast .text-indigo-800,
+html.high-contrast .text-indigo-700,
+html.high-contrast .text-indigo-600 {
+  color: #ffffff !important;
 }
 
-html.high-contrast .border,
-html.high-contrast .border-slate-200,
-html.high-contrast .border-slate-300 {
+/* 2. Surfaces, Cards, and Containers */
+html.high-contrast .bg-white,
+html.high-contrast .bg-slate-50,
+html.high-contrast .bg-slate-100,
+html.high-contrast .bg-indigo-50,
+html.high-contrast article,
+html.high-contrast header,
+html.high-contrast aside,
+html.high-contrast section,
+html.high-contrast nav,
+html.high-contrast footer {
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
   border-color: #ffffff !important;
 }
 
-html.high-contrast button,
-html.high-contrast a {
-  outline-offset: 3px !important;
+html.high-contrast .bg-gradient-to-b,
+html.high-contrast .bg-gradient-to-r {
+  background-image: none !important;
+  background-color: #000000 !important;
 }
 
-/* Visible focus indicators for keyboard navigation (WCAG 2.4.7) */
+/* 3. High-Contrast Primary Buttons & CTAs (Solid Gold/Yellow on Black for Maximum Visual Pop) */
+html.high-contrast .bg-indigo-600,
+html.high-contrast .bg-indigo-700,
+html.high-contrast button[type="submit"],
+html.high-contrast .bg-indigo-600 * {
+  background-color: #facc15 !important; /* Gold */
+  color: #000000 !important;           /* Black text */
+  border-color: #facc15 !important;
+  font-weight: 800 !important;
+}
+
+html.high-contrast .bg-indigo-600 svg,
+html.high-contrast .bg-indigo-700 svg,
+html.high-contrast button[type="submit"] svg {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+/* 4. Secondary Buttons & Actions (Crisp White on Black Border) */
+html.high-contrast .bg-slate-100,
+html.high-contrast .bg-slate-200,
+html.high-contrast button.bg-slate-100,
+html.high-contrast a.bg-slate-100 {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  font-weight: 700 !important;
+}
+
+html.high-contrast .bg-slate-100 *,
+html.high-contrast .bg-slate-200 * {
+  color: #ffffff !important;
+}
+
+/* 5. Inputs, Textareas, and Forms */
+html.high-contrast input,
+html.high-contrast textarea,
+html.high-contrast select {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  font-weight: 600 !important;
+}
+
+html.high-contrast input::placeholder,
+html.high-contrast textarea::placeholder {
+  color: #cbd5e1 !important;
+  opacity: 1 !important;
+}
+
+html.high-contrast input:focus,
+html.high-contrast textarea:focus {
+  border-color: #facc15 !important;
+  outline: 3px solid #facc15 !important;
+}
+
+/* 6. Filter Pills, Badges & Highlights */
+html.high-contrast [aria-pressed="true"],
+html.high-contrast [aria-current="step"],
+html.high-contrast .bg-indigo-50.border-indigo-200 {
+  background-color: #facc15 !important;
+  color: #000000 !important;
+  border: 2px solid #ffffff !important;
+}
+
+html.high-contrast [aria-pressed="true"] *,
+html.high-contrast [aria-current="step"] *,
+html.high-contrast .bg-indigo-50.border-indigo-200 * {
+  color: #000000 !important;
+}
+
+html.high-contrast .bg-indigo-100,
+html.high-contrast .bg-emerald-100,
+html.high-contrast .bg-teal-100 {
+  background-color: #1e1e1e !important;
+  color: #facc15 !important;
+  border: 1.5px solid #facc15 !important;
+  font-weight: 800 !important;
+}
+
+html.high-contrast .bg-indigo-100 *,
+html.high-contrast .bg-emerald-100 * {
+  color: #facc15 !important;
+}
+
+/* 7. Modal & Dialog Windows */
+html.high-contrast [role="dialog"] {
+  background-color: #0a0a0a !important;
+  border: 3px solid #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* 8. Links with Underline in High Contrast */
+html.high-contrast a {
+  text-decoration: underline !important;
+  text-decoration-thickness: 1.5px !important;
+  text-underline-offset: 3px !important;
+}
+
+html.high-contrast .border,
+html.high-contrast .border-slate-100,
+html.high-contrast .border-slate-200,
+html.high-contrast .border-slate-300,
+html.high-contrast .border-indigo-200 {
+  border-color: #ffffff !important;
+}
+
+/* 9. Universal Focus Ring (WCAG 2.4.7) */
 *:focus-visible {
-  outline: 3px solid #4f46e5 !important; /* Royal Indigo */
+  outline: 3px solid #4f46e5 !important;
   outline-offset: 2px !important;
 }
 
 html.high-contrast *:focus-visible {
-  outline: 4px solid #facc15 !important; /* High-visibility yellow on black */
+  outline: 4px solid #facc15 !important;
   outline-offset: 3px !important;
 }
 
