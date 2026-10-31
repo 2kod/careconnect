@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { AccessibilityProvider } from './context/AccessibilityContext';
 import { AuthProvider } from './context/AuthContext';
-import AccessibilityBar from './components/accessibility/AccessibilityBar';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import RouteAnnouncer from './components/common/RouteAnnouncer';
@@ -42,13 +41,10 @@ export function App() {
       <AuthProvider>
         <Router>
           <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 transition-colors">
-            {/* 1. Sticky Universal Accessibility Toolbar */}
-            <AccessibilityBar />
-
-            {/* 2. Main Navigation Bar */}
+            {/* Unified Clean Navigation Bar */}
             <Navbar />
 
-            {/* 3. Screen-reader and dynamic page focus announcer */}
+            {/* Screen-reader and dynamic page focus announcer */}
             <RouteAnnouncer />
 
             {/* 4. Main Page View Content */}
