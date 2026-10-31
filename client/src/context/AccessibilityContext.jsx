@@ -17,10 +17,19 @@ export const AccessibilityProvider = ({ children }) => {
     return localStorage.getItem('careconnect_voice_guidance') === 'true';
   });
 
+  const [colorTheme, setColorThemeState] = useState(() => {
+    return localStorage.getItem('careconnect_color_theme') || 'indigo';
+  });
+
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [liveAnnouncement, setLiveAnnouncement] = useState('');
 
   // 2. Synchronize DOM classes and attributes whenever state changes
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', colorTheme);
+    localStorage.setItem('careconnect_color_theme', colorTheme);
+  }, [colorTheme]);
+
   useEffect(() => {
     document.documentElement.setAttribute('data-font-size', fontSize);
     localStorage.setItem('careconnect_font_size', fontSize);
@@ -96,6 +105,16 @@ export const AccessibilityProvider = ({ children }) => {
     });
   };
 
+  const setColorTheme = (newTheme) => {
+    setColorThemeState(newTheme);
+    const names = {
+      indigo: 'Warm Indigo and Lavender',
+      blue: 'Clinical Ocean Blue',
+      emerald: 'Sage and Emerald Health'
+    };
+    announce(`Color scheme changed to ${names[newTheme] || newTheme}`);
+  };
+
   // Sync with user profile on server if logged in
   const syncPreferencesFromServer = (prefs) => {
     if (!prefs) return;
@@ -113,6 +132,8 @@ export const AccessibilityProvider = ({ children }) => {
         toggleHighContrast,
         voiceGuidance,
         toggleVoiceGuidance,
+        colorTheme,
+        setColorTheme,
         speak,
         stopSpeaking,
         isSpeaking,
@@ -142,3 +163,4 @@ export const useAccessibility = () => {
   }
   return context;
 };
+

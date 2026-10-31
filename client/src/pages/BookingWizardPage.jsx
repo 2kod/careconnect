@@ -669,3 +669,4 @@ export const BookingWizardPage = () => {
 };
 
 export default BookingWizardPage;
+

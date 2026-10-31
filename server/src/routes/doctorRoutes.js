@@ -10,3 +10,4 @@ router.get('/:id', getDoctorById);
 router.get('/:doctorId/slots', getDoctorSlots);
 
 export default router;
+

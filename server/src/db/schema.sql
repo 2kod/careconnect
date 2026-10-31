@@ -88,3 +88,4 @@ CREATE TABLE appointments (
 CREATE INDEX idx_doctors_specialization ON doctors(specialization_id);
 CREATE INDEX idx_slots_doctor_date ON appointment_slots(doctor_id, slot_date, status);
 CREATE INDEX idx_appointments_user ON appointments(user_id, status);
+

@@ -81,3 +81,4 @@ export const getDoctorSlots = async (req, res, next) => {
     next(err);
   }
 };
+

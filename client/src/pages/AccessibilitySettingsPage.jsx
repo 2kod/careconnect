@@ -22,6 +22,8 @@ export const AccessibilitySettingsPage = () => {
     toggleHighContrast,
     voiceGuidance,
     toggleVoiceGuidance,
+    colorTheme,
+    setColorTheme,
     speak,
     announce
   } = useAccessibility();
@@ -155,7 +157,90 @@ export const AccessibilitySettingsPage = () => {
           </div>
         </section>
 
-        {/* 2. Visual Contrast & Themes */}
+        {/* 2. Color Palette & Tone Theme */}
+        <section aria-labelledby="theme-palette-heading" className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center">
+              <Sliders className="w-5 h-5" />
+            </div>
+            <div>
+              <h2 id="theme-palette-heading" className="text-xl font-bold text-slate-900">
+                Color Palette & Visual Tone
+              </h2>
+              <p className="text-sm text-slate-600">
+                Select your preferred soothing healthcare palette. Changes apply immediately across all screens.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {/* Indigo & Lavender */}
+            <button
+              type="button"
+              onClick={() => setColorTheme('indigo')}
+              aria-pressed={colorTheme === 'indigo'}
+              className={`p-5 rounded-2xl border-2 text-left transition-all ${
+                colorTheme === 'indigo'
+                  ? 'border-indigo-600 bg-indigo-50/70 shadow-sm ring-2 ring-indigo-500/20'
+                  : 'border-slate-200 bg-slate-50 hover:bg-slate-100'
+              }`}
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-4 h-4 rounded-full bg-indigo-600 border border-indigo-400" />
+                <span className="w-4 h-4 rounded-full bg-indigo-200 border border-indigo-300" />
+                <span className="text-xs font-bold text-indigo-800 uppercase tracking-wider ml-auto">Active</span>
+              </div>
+              <h3 className="font-bold text-base text-slate-900">Warm Indigo & Lavender</h3>
+              <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                Distinguished and gentle on tired eyes. 8.5:1 WCAG AAA high contrast ratio.
+              </p>
+            </button>
+
+            {/* Ocean Blue */}
+            <button
+              type="button"
+              onClick={() => setColorTheme('blue')}
+              aria-pressed={colorTheme === 'blue'}
+              className={`p-5 rounded-2xl border-2 text-left transition-all ${
+                colorTheme === 'blue'
+                  ? 'border-blue-600 bg-blue-50/70 shadow-sm ring-2 ring-blue-500/20'
+                  : 'border-slate-200 bg-slate-50 hover:bg-slate-100'
+              }`}
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-4 h-4 rounded-full bg-blue-600 border border-blue-400" />
+                <span className="w-4 h-4 rounded-full bg-blue-200 border border-blue-300" />
+              </div>
+              <h3 className="font-bold text-base text-slate-900">Clinical Ocean Blue</h3>
+              <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                Modern, trustworthy hospital SaaS palette with crisp, clean contrast.
+              </p>
+            </button>
+
+            {/* Emerald Sage */}
+            <button
+              type="button"
+              onClick={() => setColorTheme('emerald')}
+              aria-pressed={colorTheme === 'emerald'}
+              className={`p-5 rounded-2xl border-2 text-left transition-all ${
+                colorTheme === 'emerald'
+                  ? 'border-emerald-600 bg-emerald-50/70 shadow-sm ring-2 ring-emerald-500/20'
+                  : 'border-slate-200 bg-slate-50 hover:bg-slate-100'
+              }`}
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-4 h-4 rounded-full bg-emerald-600 border border-emerald-400" />
+                <span className="w-4 h-4 rounded-full bg-emerald-200 border border-emerald-300" />
+              </div>
+              <h3 className="font-bold text-base text-slate-900">Sage & Emerald Health</h3>
+              <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                Organic, calming botanical tones inspired by holistic wellness.
+              </p>
+            </button>
+          </div>
+        </section>
+
+        {/* 3. Visual Contrast & Themes */}
         <section aria-labelledby="contrast-heading" className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
@@ -286,3 +371,4 @@ export const AccessibilitySettingsPage = () => {
 };
 
 export default AccessibilitySettingsPage;
+

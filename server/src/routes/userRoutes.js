@@ -10,3 +10,4 @@ router.get('/preferences', getPreferences);
 router.put('/preferences', updatePreferences);
 
 export default router;
+

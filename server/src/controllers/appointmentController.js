@@ -287,3 +287,4 @@ export const cancelAppointment = async (req, res, next) => {
 
 // Helper query function
 const clientOrPoolQuery = (text, params) => pool.query(text, params);
+

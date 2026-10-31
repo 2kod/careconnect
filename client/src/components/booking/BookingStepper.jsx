@@ -69,3 +69,4 @@ export const BookingStepper = ({ currentStep = 1 }) => {
 };
 
 export default BookingStepper;
+

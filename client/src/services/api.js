@@ -63,3 +63,4 @@ export const api = {
   getPreferences: () => request('/users/preferences'),
   updatePreferences: (prefs) => request('/users/preferences', { method: 'PUT', body: JSON.stringify(prefs) }),
 };
+

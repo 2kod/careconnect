@@ -184,3 +184,4 @@ export const DoctorDetailPage = () => {
 };
 
 export default DoctorDetailPage;
+

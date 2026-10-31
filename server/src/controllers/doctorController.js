@@ -101,3 +101,4 @@ export const getDoctorById = async (req, res, next) => {
     next(err);
   }
 };
+

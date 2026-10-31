@@ -124,3 +124,4 @@ The system is instrumented to support an empirical academic usability study:
 
 3. **Why use dual persistence for accessibility preferences?**  
    *Preferences (font scale, high contrast, voice guidance) are stored immediately in `localStorage` to eliminate Flash of Unstyled Content (FOUC), and synchronized to the PostgreSQL `user_accessibility_preferences` table when logged in for cross-device continuity.*
+

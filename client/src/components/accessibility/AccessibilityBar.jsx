@@ -11,6 +11,8 @@ export const AccessibilityBar = () => {
     toggleHighContrast,
     voiceGuidance,
     toggleVoiceGuidance,
+    colorTheme,
+    setColorTheme,
     isSpeaking,
     stopSpeaking,
     speak,
@@ -91,6 +93,53 @@ export const AccessibilityBar = () => {
             </button>
           </div>
 
+          {/* Color Palette Switcher */}
+          <div className="hidden sm:flex items-center bg-slate-800 rounded-lg p-0.5 border border-slate-700" role="group" aria-label="Color scheme theme">
+            <span className="text-xs text-slate-400 px-2 select-none">Theme:</span>
+            <button
+              type="button"
+              onClick={() => setColorTheme('indigo')}
+              aria-pressed={colorTheme === 'indigo'}
+              title="Warm Indigo & Lavender (Active Theme)"
+              className={`px-2 py-1 text-xs font-semibold rounded flex items-center gap-1 ${
+                colorTheme === 'indigo'
+                  ? 'bg-indigo-600 text-white font-bold shadow-sm'
+                  : 'text-slate-300 hover:bg-slate-700'
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-indigo-300" />
+              <span>Lavender & Indigo</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setColorTheme('blue')}
+              aria-pressed={colorTheme === 'blue'}
+              title="Clinical Ocean Blue"
+              className={`px-2 py-1 text-xs font-semibold rounded flex items-center gap-1 ${
+                colorTheme === 'blue'
+                  ? 'bg-blue-600 text-white font-bold shadow-sm'
+                  : 'text-slate-300 hover:bg-slate-700'
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-blue-300" />
+              <span>Blue</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setColorTheme('emerald')}
+              aria-pressed={colorTheme === 'emerald'}
+              title="Sage & Emerald Health"
+              className={`px-2 py-1 text-xs font-semibold rounded flex items-center gap-1 ${
+                colorTheme === 'emerald'
+                  ? 'bg-emerald-600 text-white font-bold shadow-sm'
+                  : 'text-slate-300 hover:bg-slate-700'
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-300" />
+              <span>Emerald</span>
+            </button>
+          </div>
+
           {/* High Contrast Toggle */}
           <button
             type="button"
@@ -146,3 +195,4 @@ export const AccessibilityBar = () => {
 };
 
 export default AccessibilityBar;
+

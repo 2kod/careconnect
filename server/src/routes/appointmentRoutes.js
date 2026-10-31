@@ -17,3 +17,4 @@ router.get('/:id', getAppointmentById);
 router.patch('/:id/cancel', cancelAppointment);
 
 export default router;
+
