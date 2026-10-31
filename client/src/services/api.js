@@ -1,5 +1,5 @@
 // Clean API service client with automatic JWT token attachment and error extraction
-const BASE_URL = '/api';
+const BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 export const getAuthToken = () => {
   return localStorage.getItem('careconnect_token');

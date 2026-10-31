@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "CareConnect - Accessible Healthcare Appointment Booking Platform (HCI Mini Project)",
   "scripts": {
+    "build": "npm run build:client",
+    "start": "cd server && npm start",
+    "build:client": "cd client && npm install && npm run build",
     "dev:server": "cd server && npm start",
     "dev:client": "cd client && npm run dev",
-    "build:client": "cd client && npm run build",
     "db:migrate": "cd server && npm run db:migrate",
     "db:seed": "cd server && npm run db:seed",
     "test:backend": "cd server && node test-api.js"
