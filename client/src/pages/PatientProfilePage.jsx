@@ -144,7 +144,7 @@ export const PatientProfilePage = () => {
             My Account
           </span>
           <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight mt-1">
-            Patient Profile
+            My Profile
           </h1>
           <p className="text-slate-600 text-base">
             Manage your personal healthcare contact details and consultation settings.
@@ -336,3 +336,4 @@ export const PatientProfilePage = () => {
 };
 
 export default PatientProfilePage;
+

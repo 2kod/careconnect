@@ -104,7 +104,7 @@ export const Navbar = () => {
                     {user?.fullName ? user.fullName[0].toUpperCase() : <User className="w-3.5 h-3.5" />}
                   </div>
                   <span className="whitespace-nowrap font-bold">
-                    Patient Profile
+                    My Profile
                   </span>
                 </Link>
 
@@ -181,7 +181,7 @@ export const Navbar = () => {
               onClick={() => setMobileMenuOpen(false)}
               className="block px-4 py-3 rounded-xl font-bold text-base text-slate-800 hover:bg-indigo-50 hover:text-indigo-800 transition-colors"
             >
-              Patient Profile
+              My Profile
             </Link>
           )}
 
