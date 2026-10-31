@@ -56,3 +56,39 @@ export const updatePreferences = async (req, res, next) => {
   }
 };
 
+export const updateProfile = async (req, res, next) => {
+  try {
+    const userId = req.user.id;
+    const { fullName, phone } = req.body;
+
+    if (!fullName || fullName.trim().length < 2) {
+      return res.status(400).json({
+        success: false,
+        error: 'Please enter a valid full name (at least 2 letters).',
+        code: 'VALIDATION_FAILED'
+      });
+    }
+
+    const result = await pool.query(`
+      UPDATE users
+      SET full_name = $1, phone = $2, updated_at = NOW()
+      WHERE id = $3
+      RETURNING id, full_name, email, phone, role, created_at;
+    `, [fullName.trim(), phone ? phone.trim() : null, userId]);
+
+    res.status(200).json({
+      success: true,
+      message: 'Profile updated successfully!',
+      user: {
+        id: result.rows[0].id,
+        fullName: result.rows[0].full_name,
+        email: result.rows[0].email,
+        phone: result.rows[0].phone,
+        role: result.rows[0].role
+      }
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+

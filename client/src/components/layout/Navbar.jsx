@@ -90,18 +90,27 @@ export const Navbar = () => {
             </Link>
           </nav>
 
-          {/* 3. Right: Auth Actions (Clean, aligned single-line flex) */}
+          {/* 3. Right: Patient Profile & Auth Actions */}
           <div className="hidden md:flex items-center gap-3.5 flex-shrink-0">
             {isAuthenticated ? (
               <div className="flex items-center gap-3 whitespace-nowrap">
-                <div className="text-right hidden sm:block">
-                  <p className="text-sm font-bold text-slate-900 leading-tight whitespace-nowrap">
-                    {user?.fullName}
-                  </p>
-                  <p className="text-xs text-slate-500 whitespace-nowrap">
-                    {user?.role === 'admin' ? 'Administrator' : 'Patient'}
-                  </p>
-                </div>
+                <Link
+                  to="/profile"
+                  className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-bold transition-all border ${
+                    isActive('/profile')
+                      ? 'bg-indigo-50 text-indigo-700 border-indigo-200 shadow-sm'
+                      : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-indigo-50 hover:text-indigo-700 hover:border-indigo-200'
+                  }`}
+                  aria-label="View and edit patient profile"
+                >
+                  <div className="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs font-bold flex-shrink-0">
+                    {user?.fullName ? user.fullName[0].toUpperCase() : <User className="w-3.5 h-3.5" />}
+                  </div>
+                  <span className="whitespace-nowrap font-bold">
+                    Patient Profile
+                  </span>
+                </Link>
+
                 <AccessibleButton
                   variant="secondary"
                   size="sm"
@@ -169,6 +178,15 @@ export const Navbar = () => {
           >
             Accessibility Settings
           </Link>
+          {isAuthenticated && (
+            <Link
+              to="/profile"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-4 py-3 rounded-xl font-bold text-base text-slate-800 hover:bg-indigo-50 hover:text-indigo-800 transition-colors"
+            >
+              Patient Profile
+            </Link>
+          )}
 
           <div className="pt-4 border-t border-slate-100">
             {isAuthenticated ? (

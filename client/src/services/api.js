@@ -59,8 +59,9 @@ export const api = {
   getAppointmentById: (id) => request(`/appointments/${id}`),
   cancelAppointment: (id, reason) => request(`/appointments/${id}/cancel`, { method: 'PATCH', body: JSON.stringify({ reason }) }),
 
-  // User Preferences
+  // User Preferences & Profile
   getPreferences: () => request('/users/preferences'),
   updatePreferences: (prefs) => request('/users/preferences', { method: 'PUT', body: JSON.stringify(prefs) }),
+  updateProfile: (profileData) => request('/users/profile', { method: 'PUT', body: JSON.stringify(profileData) }),
 };
 

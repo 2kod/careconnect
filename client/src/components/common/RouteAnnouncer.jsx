@@ -9,6 +9,7 @@ const routeTitles = {
   '/login': 'Sign In | CareConnect',
   '/register': 'Create an Account | CareConnect',
   '/accessibility-settings': 'Accessibility Settings & Support | CareConnect',
+  '/profile': 'Patient Profile | CareConnect',
 };
 
 export const RouteAnnouncer = () => {

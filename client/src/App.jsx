@@ -16,6 +16,7 @@ import PatientDashboardPage from './pages/PatientDashboardPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AccessibilitySettingsPage from './pages/AccessibilitySettingsPage';
+import PatientProfilePage from './pages/PatientProfilePage';
 
 function NotFoundPage() {
   return (
@@ -62,6 +63,7 @@ export function App() {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/accessibility-settings" element={<AccessibilitySettingsPage />} />
+                <Route path="/profile" element={<PatientProfilePage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </div>
