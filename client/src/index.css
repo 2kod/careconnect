@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-scale: 1;
+}
+
+/* Dynamic font-size scaling controlled by AccessibilityContext */
+html[data-font-size="normal"] {
+  font-size: 16px;
+}
+
+html[data-font-size="large"] {
+  font-size: 18.5px;
+}
+
+html[data-font-size="x-large"] {
+  font-size: 21px;
+}
+
+/* High Contrast Mode Styles (WCAG 2.1 AAA Compliant) */
+html.high-contrast {
+  filter: contrast(125%);
+}
+
+html.high-contrast body {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+html.high-contrast .bg-white {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+}
+
+html.high-contrast .bg-slate-50,
+html.high-contrast .bg-slate-100 {
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
+}
+
+html.high-contrast .text-slate-600,
+html.high-contrast .text-slate-500,
+html.high-contrast .text-slate-700 {
+  color: #e2e8f0 !important;
+}
+
+html.high-contrast .border,
+html.high-contrast .border-slate-200,
+html.high-contrast .border-slate-300 {
+  border-color: #ffffff !important;
+}
+
+html.high-contrast button,
+html.high-contrast a {
+  outline-offset: 3px !important;
+}
+
+/* Visible focus indicators for keyboard navigation (WCAG 2.4.7) */
+*:focus-visible {
+  outline: 3px solid #0d9488 !important;
+  outline-offset: 2px !important;
+}
+
+html.high-contrast *:focus-visible {
+  outline: 4px solid #facc15 !important; /* High-visibility yellow on black */
+  outline-offset: 3px !important;
+}
+
+/* Smooth transitions */
+button, a, input, select {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

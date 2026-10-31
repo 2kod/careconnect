@@ -1,0 +1,24 @@
+{
+  "name": "careconnect",
+  "version": "1.0.0",
+  "description": "CareConnect - Accessible Healthcare Appointment Booking Platform (HCI Mini Project)",
+  "scripts": {
+    "dev:server": "cd server && npm start",
+    "dev:client": "cd client && npm run dev",
+    "build:client": "cd client && npm run build",
+    "db:migrate": "cd server && npm run db:migrate",
+    "db:seed": "cd server && npm run db:seed",
+    "test:backend": "cd server && node test-api.js"
+  },
+  "keywords": [
+    "healthcare",
+    "accessibility",
+    "hci",
+    "react",
+    "express",
+    "postgresql",
+    "pern-stack"
+  ],
+  "author": "CareConnect Team - Manipal University Jaipur",
+  "license": "MIT"
+}
