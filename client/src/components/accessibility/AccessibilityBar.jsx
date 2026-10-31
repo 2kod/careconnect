@@ -33,9 +33,9 @@ export const AccessibilityBar = () => {
   return (
     <aside 
       aria-label="Accessibility controls bar"
-      className="bg-slate-900 text-white px-4 py-2.5 text-sm border-b border-slate-800 transition-colors"
+      className="bg-slate-900 text-white px-4 sm:px-6 lg:px-8 py-2.5 text-sm border-b border-slate-800 transition-colors"
     >
-      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
         {/* Left: Quick Label */}
         <div className="flex items-center gap-2">
           <span className="font-semibold flex items-center gap-1.5 text-indigo-300">
@@ -46,7 +46,7 @@ export const AccessibilityBar = () => {
         </div>
 
         {/* Center / Right: Accessibility Quick Actions */}
-        <div className="flex flex-wrap items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4">
           {/* Font Size Selector */}
           <div className="flex items-center bg-slate-800 rounded-lg p-0.5 border border-slate-700" role="group" aria-label="Text size options">
             <span className="text-xs text-slate-400 px-2 select-none" id="text-size-label">Text:</span>
