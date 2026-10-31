@@ -250,6 +250,10 @@ export const PatientDashboardPage = () => {
                           src={appt.doctor_image}
                           alt={`Photo of ${appt.doctor_name}`}
                           className="w-16 h-16 rounded-2xl object-cover bg-slate-100 border border-slate-200 flex-shrink-0"
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80';
+                          }}
                         />
                         <div>
                           <span className="text-xs font-bold uppercase text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">

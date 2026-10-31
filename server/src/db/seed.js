@@ -123,7 +123,7 @@ async function runSeed() {
         hospital: 'Aura Skin & Allergy Care',
         fee: 500.00,
         bio: 'Approachable and warm, Dr. Kavita provides soothing care for sensitive skin, rashes, and allergies with simple, easy-to-follow daily routines that bring relief.',
-        image: 'https://images.unsplash.com/photo-1594824813710-8549e5d4cb05?auto=format&fit=crop&w=500&q=80'
+        image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80'
       }
     ];
 

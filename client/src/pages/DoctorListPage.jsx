@@ -254,6 +254,10 @@ export const DoctorListPage = () => {
                     alt={`Photo of ${doctor.full_name}`}
                     className="w-20 h-20 rounded-2xl object-cover bg-slate-100 border border-slate-200 flex-shrink-0"
                     loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80';
+                    }}
                   />
                   <div>
                     <span className="inline-block px-2.5 py-1 rounded-md bg-indigo-100 text-indigo-800 text-xs font-bold uppercase tracking-wider mb-1">
@@ -287,7 +291,7 @@ export const DoctorListPage = () => {
               </div>
 
               {/* Bottom Consultation Fee & Booking CTA */}
-              <div className="p-6 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between gap-4">
+              <div className="p-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-4">
                 <div>
                   <span className="text-xs text-slate-500 block">Consultation Fee</span>
                   <span className="text-xl font-black text-slate-900">

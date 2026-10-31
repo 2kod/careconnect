@@ -91,6 +91,10 @@ export const DoctorDetailPage = () => {
             src={doctor.image_url}
             alt={`Photo of ${doctor.full_name}`}
             className="w-32 h-32 md:w-36 md:h-36 rounded-2xl object-cover bg-slate-100 border-2 border-indigo-600/20 shadow-md flex-shrink-0"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80';
+            }}
           />
           <div className="flex-1">
             <span className="inline-block px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 text-xs font-bold uppercase tracking-wider mb-2 border border-indigo-200">
