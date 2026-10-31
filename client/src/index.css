@@ -25,7 +25,7 @@ html.high-contrast body {
   color: #ffffff !important;
 }
 
-/* 1. Global Text Visibility in High Contrast */
+/* 1. Global Text Visibility in High Contrast (Default to pure white) */
 html.high-contrast h1,
 html.high-contrast h2,
 html.high-contrast h3,
@@ -76,41 +76,98 @@ html.high-contrast .bg-gradient-to-r {
   background-color: #000000 !important;
 }
 
-/* 3. High-Contrast Primary Buttons & CTAs (Solid Gold/Yellow on Black for Maximum Visual Pop) */
+/* 3. Primary High-Contrast Buttons & Active Elements (Gold #facc15 with solid black writing) */
 html.high-contrast .bg-indigo-600,
 html.high-contrast .bg-indigo-700,
 html.high-contrast button[type="submit"],
-html.high-contrast .bg-indigo-600 * {
-  background-color: #facc15 !important; /* Gold */
+html.high-contrast [aria-pressed="true"],
+html.high-contrast [aria-checked="true"],
+html.high-contrast [aria-current="step"],
+html.high-contrast .bg-indigo-50.border-indigo-200,
+html.high-contrast button.bg-indigo-600 {
+  background-color: #facc15 !important; /* Vivid Gold */
   color: #000000 !important;           /* Black text */
-  border-color: #facc15 !important;
+  border: 2px solid #ffffff !important;
   font-weight: 800 !important;
 }
 
-html.high-contrast .bg-indigo-600 svg,
-html.high-contrast .bg-indigo-700 svg,
-html.high-contrast button[type="submit"] svg {
+/* Force all text, spans, and icons inside gold elements to be pure black */
+html.high-contrast .bg-indigo-600 *,
+html.high-contrast .bg-indigo-700 *,
+html.high-contrast button[type="submit"] *,
+html.high-contrast [aria-pressed="true"] *,
+html.high-contrast [aria-checked="true"] *,
+html.high-contrast [aria-current="step"] *,
+html.high-contrast .bg-indigo-50.border-indigo-200 *,
+html.high-contrast button.bg-indigo-600 *,
+html.high-contrast [aria-checked="true"] span,
+html.high-contrast [aria-pressed="true"] span {
   color: #000000 !important;
   stroke: #000000 !important;
 }
 
-/* 4. Secondary Buttons & Actions (Crisp White on Black Border) */
-html.high-contrast .bg-slate-100,
-html.high-contrast .bg-slate-200,
+/* 4. Outline Buttons (Crisp Gold Border & Text on Black) */
+html.high-contrast .border-indigo-600,
+html.high-contrast .border-2.border-indigo-600 {
+  background-color: #000000 !important;
+  color: #facc15 !important;
+  border: 2px solid #facc15 !important;
+  font-weight: 700 !important;
+}
+
+html.high-contrast .border-indigo-600 *,
+html.high-contrast .border-2.border-indigo-600 * {
+  color: #facc15 !important;
+  stroke: #facc15 !important;
+}
+
+/* 5. Danger / Cancel Buttons (Vivid Red on Black with White Border) */
+html.high-contrast .bg-rose-600,
+html.high-contrast .bg-rose-700 {
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  font-weight: 800 !important;
+}
+
+html.high-contrast .bg-rose-600 *,
+html.high-contrast .bg-rose-700 * {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* 6. Secondary & Ghost Buttons (High Contrast White Border) */
 html.high-contrast button.bg-slate-100,
-html.high-contrast a.bg-slate-100 {
+html.high-contrast a.bg-slate-100,
+html.high-contrast button.bg-transparent {
   background-color: #121212 !important;
   color: #ffffff !important;
   border: 2px solid #ffffff !important;
   font-weight: 700 !important;
 }
 
-html.high-contrast .bg-slate-100 *,
-html.high-contrast .bg-slate-200 * {
+html.high-contrast button.bg-slate-100 *,
+html.high-contrast a.bg-slate-100 *,
+html.high-contrast button.bg-transparent * {
   color: #ffffff !important;
 }
 
-/* 5. Inputs, Textareas, and Forms */
+/* 7. Disabled Elements */
+html.high-contrast button:disabled,
+html.high-contrast [aria-disabled="true"],
+html.high-contrast button.cursor-not-allowed {
+  background-color: #181818 !important;
+  color: #888888 !important;
+  border: 1px solid #444444 !important;
+  opacity: 0.6 !important;
+}
+
+html.high-contrast button:disabled *,
+html.high-contrast button.cursor-not-allowed * {
+  color: #888888 !important;
+}
+
+/* 8. Inputs, Textareas, and Forms */
 html.high-contrast input,
 html.high-contrast textarea,
 html.high-contrast select {
@@ -132,21 +189,7 @@ html.high-contrast textarea:focus {
   outline: 3px solid #facc15 !important;
 }
 
-/* 6. Filter Pills, Badges & Highlights */
-html.high-contrast [aria-pressed="true"],
-html.high-contrast [aria-current="step"],
-html.high-contrast .bg-indigo-50.border-indigo-200 {
-  background-color: #facc15 !important;
-  color: #000000 !important;
-  border: 2px solid #ffffff !important;
-}
-
-html.high-contrast [aria-pressed="true"] *,
-html.high-contrast [aria-current="step"] *,
-html.high-contrast .bg-indigo-50.border-indigo-200 * {
-  color: #000000 !important;
-}
-
+/* 9. Badges & Tags */
 html.high-contrast .bg-indigo-100,
 html.high-contrast .bg-emerald-100,
 html.high-contrast .bg-teal-100 {
@@ -161,14 +204,14 @@ html.high-contrast .bg-emerald-100 * {
   color: #facc15 !important;
 }
 
-/* 7. Modal & Dialog Windows */
+/* 10. Modal & Dialog Windows */
 html.high-contrast [role="dialog"] {
   background-color: #0a0a0a !important;
   border: 3px solid #ffffff !important;
   color: #ffffff !important;
 }
 
-/* 8. Links with Underline in High Contrast */
+/* 11. Links with Underline in High Contrast */
 html.high-contrast a {
   text-decoration: underline !important;
   text-decoration-thickness: 1.5px !important;
@@ -183,7 +226,7 @@ html.high-contrast .border-indigo-200 {
   border-color: #ffffff !important;
 }
 
-/* 9. Universal Focus Ring (WCAG 2.4.7) */
+/* 12. Universal Focus Ring (WCAG 2.4.7) */
 *:focus-visible {
   outline: 3px solid #4f46e5 !important;
   outline-offset: 2px !important;

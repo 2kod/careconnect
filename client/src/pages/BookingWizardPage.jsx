@@ -238,10 +238,10 @@ export const BookingWizardPage = () => {
         <section aria-labelledby="step1-heading" className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm animate-fade-in">
           <div className="mb-6">
             <h1 id="step1-heading" className="text-2xl sm:text-3xl font-black text-slate-900">
-              Step 1: Choose Your Preferred Date
+              Step 1: Which day works best for you?
             </h1>
             <p className="text-slate-600 text-base mt-1">
-              Select any of the upcoming days below to check available consultation hours.
+              Select any upcoming day below. Take your time — there is no rush.
             </p>
           </div>
 
@@ -310,10 +310,10 @@ export const BookingWizardPage = () => {
           <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <h1 id="step2-heading" className="text-2xl sm:text-3xl font-black text-slate-900">
-                Step 2: Choose a Time Slot
+                Step 2: Pick a comfortable time of day
               </h1>
               <p className="text-slate-600 text-base mt-1">
-                Showing available timings for <strong>{new Date(selectedDate).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</strong>
+                Showing available times for <strong>{new Date(selectedDate).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</strong>
               </p>
             </div>
 
@@ -463,10 +463,10 @@ export const BookingWizardPage = () => {
         <section aria-labelledby="step3-heading" className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm animate-fade-in">
           <div className="mb-6">
             <h1 id="step3-heading" className="text-2xl sm:text-3xl font-black text-slate-900">
-              Step 3: Review & Confirm Your Appointment
+              Step 3: Let's double-check everything together
             </h1>
             <p className="text-slate-600 text-base mt-1">
-              Please check your appointment information below before completing your booking.
+              Please take a moment to look over your doctor and appointment time below.
             </p>
           </div>
 
@@ -595,7 +595,7 @@ export const BookingWizardPage = () => {
           </h1>
 
           <p className="text-slate-600 text-lg max-w-xl mx-auto mb-8">
-            Your appointment has been successfully scheduled. A confirmation has been registered to your patient profile.
+            Take a deep breath — your doctor has been scheduled and will be ready to give you gentle, unhurried care.
           </p>
 
           {/* Receipt Print Area */}

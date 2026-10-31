@@ -135,7 +135,7 @@ export const DoctorDetailPage = () => {
           <div>
             <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
               <Award className="w-5 h-5 text-indigo-600" />
-              <span>Doctor Biography & Approach</span>
+              <span>About the Doctor & Their Care Approach</span>
             </h2>
             <p className="text-base md:text-lg text-slate-700 leading-relaxed bg-slate-50 p-6 rounded-2xl border border-slate-200">
               {doctor.bio}
@@ -149,7 +149,7 @@ export const DoctorDetailPage = () => {
               <span className="text-3xl font-black">
                 ₹{parseInt(doctor.consultation_fee, 10)}
               </span>
-              <p className="text-xs text-indigo-100 mt-1">Includes consultation and initial health review</p>
+              <p className="text-xs text-indigo-100 mt-1">Includes consultation and unhurried health review</p>
             </div>
 
             <Link to={`/book/${doctor.id}`}>
@@ -158,7 +158,7 @@ export const DoctorDetailPage = () => {
                 className="bg-white text-indigo-900 hover:bg-indigo-50 active:bg-indigo-100 font-black shadow-lg"
                 icon={Calendar}
               >
-                Proceed to Book Appointment
+                Schedule a Visit with this Doctor
               </AccessibleButton>
             </Link>
           </div>
@@ -167,11 +167,11 @@ export const DoctorDetailPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-600 pt-4 border-t border-slate-100">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-              <span>Instant slot reservation with no waiting on hold</span>
+              <span>Immediate confirmation — no waiting on hold or busy phone lines</span>
             </div>
             <div className="flex items-center gap-2">
               <HeartHandshake className="w-5 h-5 text-indigo-600 flex-shrink-0" />
-              <span>Free cancellation up to 2 hours before scheduled slot</span>
+              <span>Peace of mind: free and simple cancellation if plans change</span>
             </div>
           </div>
 

@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 import pool from '../config/database.js';
 
 async function runSeed() {
-  console.log('🌱 Starting database seeding for CareConnect (HCI Demo)...');
+  console.log('🌱 Starting database seeding for CareConnect (Patient-Centered Care)...');
   const client = await pool.connect();
 
   try {
@@ -11,17 +11,17 @@ async function runSeed() {
     // 1. Clear existing data
     await client.query('TRUNCATE TABLE appointments, appointment_slots, doctors, user_accessibility_preferences, users, specializations CASCADE;');
 
-    // 2. Insert Specializations
+    // 2. Insert Specializations with warm, human descriptions
     console.log('Inserting Specializations...');
     const specResult = await client.query(`
       INSERT INTO specializations (name, description, icon_name) VALUES
-      ('General Medicine', 'Primary care, preventive health, fever, routine checkups, and chronic disease management.', 'Stethoscope'),
-      ('Geriatric Medicine', 'Specialized care for older adults, focusing on mobility, memory, healthy aging, and longevity.', 'HeartHandshake'),
-      ('Cardiology', 'Heart health, blood pressure management, ECG review, and cardiovascular wellness.', 'Heart'),
-      ('Ophthalmology', 'Comprehensive eye examinations, vision care, cataract evaluation, and glaucoma screening.', 'Eye'),
-      ('Orthopedics', 'Bone, joint, spine, arthritis, mobility support, and physical rehabilitation.', 'Activity'),
-      ('Neurology', 'Brain and nervous system health, memory support, headaches, and tremors.', 'Brain'),
-      ('Dermatology', 'Skin health, allergies, rashes, lesion screenings, and dermatological care.', 'ShieldCheck')
+      ('Senior & Elder Care', 'Warm, respectful care for our beloved parents and grandparents. Unhurried visits focused on comfort, healthy aging, and everyday independence.', 'HeartHandshake'),
+      ('Family & General Medicine', 'Your trusted family doctor. Gentle checkups for everyday health, fevers, coughs, and keeping your whole family feeling their best.', 'Stethoscope'),
+      ('Heart Wellness', 'Dedicated, caring heart and blood pressure care, helping you and your loved ones stay active, energetic, and worry-free.', 'Heart'),
+      ('Eye & Vision Care', 'Gentle, clear vision checkups so you can comfortably read, navigate, and see the precious faces of your loved ones.', 'Eye'),
+      ('Bone & Joint Relief', 'Caring support for knee comfort, arthritis, and back ease, helping you walk with balance, confidence, and comfort.', 'Activity'),
+      ('Memory & Nerve Care', 'Patient, attentive care for memory, headaches, and balance with physicians who truly take the time to listen.', 'Brain'),
+      ('Skin & Allergy Care', 'Kind and soothing care for sensitive skin, rashes, and allergies with simple, easy-to-follow daily routines.', 'ShieldCheck')
       RETURNING id, name;
     `);
 
@@ -38,7 +38,7 @@ async function runSeed() {
       INSERT INTO users (full_name, email, password_hash, phone, role) VALUES
       ('Ramesh Sharma', 'ramesh@careconnect.org', $1, '+91 98765 43210', 'patient'),
       ('Priya Patel', 'priya@careconnect.org', $1, '+91 98765 43211', 'patient'),
-      ('Dr. Admin', 'admin@careconnect.org', $1, '+91 98765 00000', 'admin')
+      ('Care Team Lead', 'admin@careconnect.org', $1, '+91 98765 00000', 'admin')
       RETURNING id, full_name, email;
     `, [passwordHash]);
 
@@ -52,77 +52,77 @@ async function runSeed() {
       ($2, 'normal', true, false, true, false);
     `, [rameshId, priyaId]);
 
-    // 5. Insert Doctors
-    console.log('Inserting Fictional Doctors...');
+    // 5. Insert Doctors with Warm, Empathetic Bios
+    console.log('Inserting Doctors...');
     const doctorData = [
       {
-        spec: 'Geriatric Medicine',
+        spec: 'Senior & Elder Care',
         name: 'Dr. Anita Deshmukh',
-        qualification: 'MBBS, MD (Geriatric Medicine, AIIMS)',
+        qualification: 'MBBS, MD (Senior Health & Wellness)',
         experience: 22,
         hospital: 'CareConnect Senior Wellness Centre, Jaipur',
         fee: 500.00,
-        bio: 'Dedicated to compassionate, patient-centered care for seniors. Specializes in multi-morbidity management, gentle consultation pace, and clear medication guidance.',
+        bio: 'Known for her gentle smile and unhurried consultation pace. She takes all the time needed to listen to seniors and their family members, explaining every medication simply with genuine love and care.',
         image: 'https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=500&q=80'
       },
       {
-        spec: 'Cardiology',
+        spec: 'Heart Wellness',
         name: 'Dr. Rajesh Sen',
         qualification: 'MBBS, MD, DM (Cardiology)',
         experience: 18,
-        hospital: 'Apex Heart & Vascular Institute, Jaipur',
+        hospital: 'Apex Heart & Family Institute, Jaipur',
         fee: 750.00,
-        bio: 'Senior consultant cardiologist passionate about hypertension management, preventive cardiovascular health, and elderly heart wellness.',
+        bio: 'A warm-hearted heart specialist who believes in treating patients like his own family. He is passionate about healthy aging and answers every question calmly without any confusing medical jargon.',
         image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=500&q=80'
       },
       {
-        spec: 'Ophthalmology',
+        spec: 'Eye & Vision Care',
         name: 'Dr. Sunita Varma',
         qualification: 'MBBS, MS (Ophthalmology)',
         experience: 14,
-        hospital: 'Drishti Vision Care & Retina Clinic',
+        hospital: 'Drishti Vision Care & Family Clinic',
         fee: 450.00,
-        bio: 'Expert in low-vision assistance, cataract screening, diabetic retinopathy, and accessible visual ergonomics for digital workers.',
+        bio: 'Beloved by patients for her reassuring and calming presence. She treats vision care with immense gentleness so you and your family always feel safe, respected, and completely comfortable.',
         image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80'
       },
       {
-        spec: 'General Medicine',
+        spec: 'Family & General Medicine',
         name: 'Dr. Vikram Malhotra',
-        qualification: 'MBBS, MD (General Medicine)',
+        qualification: 'MBBS, MD (Family Medicine)',
         experience: 12,
         hospital: 'City Community Health Center',
         fee: 400.00,
-        bio: 'Holistic primary care physician known for taking the time to listen, explain medical concepts in plain everyday language, and coordinate comprehensive care.',
+        bio: 'A friendly family physician who listens attentively without glancing at the clock. Known for his kindness, practical advice, and making every visit feel reassuring rather than stressful.',
         image: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=500&q=80'
       },
       {
-        spec: 'Orthopedics',
+        spec: 'Bone & Joint Relief',
         name: 'Dr. Meera Nambiar',
-        qualification: 'MBBS, MS (Orthopedics), Fellowship in Joint Care',
+        qualification: 'MBBS, MS (Joint & Mobility Care)',
         experience: 16,
         hospital: 'Metro Bone & Joint Institute',
         fee: 600.00,
-        bio: 'Specialist in arthritis, knee and hip preservation, bone density, fall prevention in senior citizens, and gentle physical therapy plans.',
+        bio: 'Passionate about helping older adults walk pain-free and regain their independence. She designs gentle, encouraging recovery steps with warmth, patience, and compassion.',
         image: 'https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=500&q=80'
       },
       {
-        spec: 'Neurology',
+        spec: 'Memory & Nerve Care',
         name: 'Dr. Arvind Joshi',
         qualification: 'MBBS, MD, DM (Neurology)',
         experience: 20,
         hospital: 'Jaipur Neurological Sciences Hospital',
         fee: 800.00,
-        bio: 'Comprehensive neurological consultation focusing on neuropathy, memory retention, balance disorders, and patient-first neurological care.',
+        bio: 'A thoughtful physician who understands how worrying memory or balance issues can feel for families. He provides compassionate, step-by-step guidance so you never feel alone.',
         image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=500&q=80'
       },
       {
-        spec: 'Dermatology',
+        spec: 'Skin & Allergy Care',
         name: 'Dr. Kavita Reddy',
         qualification: 'MBBS, MD (Dermatology)',
         experience: 10,
         hospital: 'Aura Skin & Allergy Care',
         fee: 500.00,
-        bio: 'Focused on sensitive skin treatments, age-related skin conditions, rash diagnosis, and straightforward, easy-to-follow care regimens.',
+        bio: 'Approachable and warm, Dr. Kavita provides soothing care for sensitive skin, rashes, and allergies with simple, easy-to-follow daily routines that bring relief.',
         image: 'https://images.unsplash.com/photo-1594824813710-8549e5d4cb05?auto=format&fit=crop&w=500&q=80'
       }
     ];
@@ -192,7 +192,7 @@ async function runSeed() {
       }
     }
 
-    // 7. Seed Sample Appointments for Ramesh to demonstrate the Dashboard
+    // 7. Seed Sample Appointments for Ramesh
     console.log('Seeding demo patient appointments...');
     if (bookedSlotSample1) {
       await client.query(`
@@ -201,7 +201,7 @@ async function runSeed() {
 
       await client.query(`
         INSERT INTO appointments (user_id, doctor_id, slot_id, status, patient_notes)
-        VALUES ($1, $2, $3, 'CONFIRMED', 'Routine elderly wellness follow-up and blood pressure review.');
+        VALUES ($1, $2, $3, 'CONFIRMED', 'Routine wellness checkup and blood pressure review with Dr. Anita.');
       `, [rameshId, bookedSlotSample1.doctor_id, bookedSlotSample1.id]);
     }
 
@@ -212,13 +212,12 @@ async function runSeed() {
 
       await client.query(`
         INSERT INTO appointments (user_id, doctor_id, slot_id, status, patient_notes)
-        VALUES ($1, $2, $3, 'CONFIRMED', 'Mild chest tightness after walking upstairs.');
+        VALUES ($1, $2, $3, 'CONFIRMED', 'Checking in about mild tiredness after walking.');
       `, [rameshId, bookedSlotSample2.doctor_id, bookedSlotSample2.id]);
     }
 
     await client.query('COMMIT');
-    console.log('🎉 CareConnect database successfully seeded!');
-    console.log('👉 Demo patient login: ramesh@careconnect.org / Password123!');
+    console.log('🎉 CareConnect database successfully seeded with compassionate care data!');
   } catch (err) {
     await client.query('ROLLBACK');
     console.error('❌ Seeding error:', err);
@@ -230,4 +229,3 @@ async function runSeed() {
 }
 
 runSeed();
-

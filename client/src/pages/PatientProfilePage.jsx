@@ -88,7 +88,7 @@ export const PatientProfilePage = () => {
 
   const handleReadProfile = () => {
     speak(
-      `Patient Profile for ${fullName}. Email is ${email}. You currently have ${appointmentCounts.upcoming} upcoming appointments scheduled.`
+      `Your profile for ${fullName}. Email is ${email}. You currently have ${appointmentCounts.upcoming} upcoming appointments scheduled.`
     );
   };
 
@@ -265,17 +265,17 @@ export const PatientProfilePage = () => {
       {/* Editable Contact Details Form */}
       <section aria-labelledby="contact-heading" className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8">
         <h2 id="contact-heading" className="text-xl font-bold text-slate-900 mb-2">
-          Contact & Account Details
+          Contact Details
         </h2>
         <p className="text-sm text-slate-600 mb-6">
-          Keep your contact information up to date so your healthcare providers can reach you regarding appointment updates.
+          We use these details solely to reach out regarding your appointments and to keep your visits smooth and comfortable.
         </p>
 
         <form onSubmit={handleUpdateProfile} className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <label htmlFor="profile-name" className="block text-sm font-bold text-slate-900 mb-1.5">
-                Full Legal Name:
+                Full Name:
               </label>
               <input
                 id="profile-name"
@@ -289,7 +289,7 @@ export const PatientProfilePage = () => {
 
             <div>
               <label htmlFor="profile-phone" className="block text-sm font-bold text-slate-900 mb-1.5">
-                Primary Phone Number:
+                Phone Number:
               </label>
               <input
                 id="profile-phone"
@@ -304,7 +304,7 @@ export const PatientProfilePage = () => {
 
           <div>
             <label htmlFor="profile-email" className="block text-sm font-bold text-slate-900 mb-1.5">
-              Registered Email Address (Read-only):
+              Email Address:
             </label>
             <input
               id="profile-email"
@@ -314,7 +314,7 @@ export const PatientProfilePage = () => {
               className="w-full p-3.5 bg-slate-100 border-2 border-slate-200 rounded-xl text-slate-500 text-base cursor-not-allowed select-none"
             />
             <p className="text-xs text-slate-400 mt-1">
-              Your email serves as your secure account login identifier.
+              Your email is used to sign in and receive appointment confirmations.
             </p>
           </div>
 
@@ -325,7 +325,7 @@ export const PatientProfilePage = () => {
               loading={saving}
               icon={Save}
             >
-              Save Profile Changes
+              Save Details
             </AccessibleButton>
           </div>
         </form>

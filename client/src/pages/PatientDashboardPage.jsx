@@ -147,13 +147,13 @@ export const PatientDashboardPage = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div>
           <span className="text-xs uppercase tracking-wider font-bold text-indigo-700 bg-indigo-100 px-2.5 py-1 rounded-md">
-            Patient Portal
+            Your Healthcare Space
           </span>
           <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight mt-1">
             My Appointments
           </h1>
           <p className="text-slate-600 text-base">
-            Welcome back, <strong>{user?.fullName}</strong>. Review your schedule or make changes easily.
+            Welcome back, <strong>{user?.fullName}</strong>. We are here to support your health journey with care and clarity.
           </p>
         </div>
 
@@ -349,12 +349,12 @@ export const PatientDashboardPage = () => {
         </div>
       )}
 
-      {/* CANCELLATION CONFIRMATION MODAL (Nielsen Heuristic: Error Prevention) */}
+      {/* CANCELLATION CONFIRMATION MODAL */}
       <AccessibleModal
         isOpen={cancelModalOpen}
         onClose={() => setCancelModalOpen(false)}
-        title="Cancel This Appointment?"
-        description="Are you sure you wish to cancel? This will immediately free up the reserved time slot for other patients."
+        title="Cancel This Visit?"
+        description="Are you sure you wish to cancel? No worries at all if your plans changed — this will gently release the slot so another person who needs care can visit the doctor."
       >
         {targetAppointment && (
           <div className="space-y-4">
@@ -367,14 +367,14 @@ export const PatientDashboardPage = () => {
 
             <div>
               <label htmlFor="cancel-reason" className="block text-sm font-bold text-slate-900 mb-1">
-                Reason for cancellation (Optional):
+                A short note if you'd like to share (Optional):
               </label>
               <input
                 id="cancel-reason"
                 type="text"
                 value={cancelReason}
                 onChange={(e) => setCancelReason(e.target.value)}
-                placeholder="e.g. Schedule conflict, feeling better, rescheduled..."
+                placeholder="e.g. Feeling much better, needed another day, schedule change..."
                 className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:border-indigo-600 focus:outline-none"
               />
             </div>
@@ -385,7 +385,7 @@ export const PatientDashboardPage = () => {
                 size="md"
                 onClick={() => setCancelModalOpen(false)}
               >
-                Keep Appointment
+                Keep My Appointment
               </AccessibleButton>
 
               <AccessibleButton
@@ -394,7 +394,7 @@ export const PatientDashboardPage = () => {
                 loading={cancelLoading}
                 onClick={handleConfirmCancel}
               >
-                Yes, Cancel Appointment
+                Yes, Cancel Visit
               </AccessibleButton>
             </div>
           </div>

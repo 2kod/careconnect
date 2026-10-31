@@ -104,10 +104,10 @@ export const DoctorListPage = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div>
           <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
-            Find Your Healthcare Specialist
+            Meet Our Caring Doctors
           </h1>
           <p className="text-slate-600 text-lg mt-1">
-            Browse verified doctors, check available clinic timings, and book your consultation with ease.
+            Choose a doctor who takes the time to listen to your health concerns. Transparent clinic timings and honest fees upfront.
           </p>
         </div>
 
@@ -118,7 +118,7 @@ export const DoctorListPage = () => {
           onClick={handleReadDoctorList}
           ariaLabel="Read list of available doctors aloud"
         >
-          Read Doctors Aloud
+          Listen to Doctor Names
         </AccessibleButton>
       </div>
 
@@ -128,7 +128,7 @@ export const DoctorListPage = () => {
         {/* Search Input Bar */}
         <div>
           <label htmlFor="doctor-search" className="block text-sm font-bold text-slate-900 mb-2">
-            Search by Doctor Name, Specialty, or Clinic:
+            Search by doctor name, care area, or clinic:
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
@@ -139,7 +139,7 @@ export const DoctorListPage = () => {
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="e.g. Dr. Anita, Cardiology, Heart, Bone..."
+              placeholder="e.g. Dr. Anita, Senior Care, Heart, Bone, Jaipur..."
               className="w-full pl-12 pr-12 py-3.5 bg-slate-50 border-2 border-slate-300 rounded-xl text-slate-900 text-base focus:bg-white focus:border-indigo-600 focus:outline-none transition-colors"
             />
             {searchTerm && (
@@ -158,7 +158,7 @@ export const DoctorListPage = () => {
         {/* Specialization Filter Pills */}
         <div>
           <span className="block text-sm font-bold text-slate-900 mb-2" id="spec-filters-label">
-            Filter by Department / Specialty:
+            Filter by care department:
           </span>
           <div 
             className="flex flex-wrap gap-2" 
@@ -175,7 +175,7 @@ export const DoctorListPage = () => {
                   : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
               }`}
             >
-              All Departments ({doctors.length})
+              All Doctors ({doctors.length})
             </button>
 
             {specializations.map((spec) => {
@@ -272,7 +272,7 @@ export const DoctorListPage = () => {
                 <div className="p-6 space-y-3 text-sm text-slate-600">
                   <div className="flex items-center gap-2 text-slate-700">
                     <Briefcase className="w-4 h-4 text-indigo-600 flex-shrink-0" aria-hidden="true" />
-                    <span><strong>{doctor.experience_years} years</strong> clinical experience</span>
+                    <span><strong>{doctor.experience_years} years</strong> caring for patients</span>
                   </div>
 
                   <div className="flex items-center gap-2 text-slate-700">
@@ -304,7 +304,7 @@ export const DoctorListPage = () => {
 
                   <Link to={`/book/${doctor.id}`}>
                     <AccessibleButton variant="primary" size="sm" icon={Calendar}>
-                      Book Slot
+                      Book Visit
                     </AccessibleButton>
                   </Link>
                 </div>

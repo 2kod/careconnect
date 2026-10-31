@@ -43,7 +43,7 @@ export const Footer = () => {
         {/* Bottom copyright line */}
         <div className="border-t border-slate-800/80 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
           <p>© 2026 CareConnect • Manipal University Jaipur</p>
-          <p className="text-slate-500">Universal Healthcare Accessibility</p>
+          <p className="text-slate-500">Dedicated to gentle, caring healthcare</p>
         </div>
       </div>
     </footer>

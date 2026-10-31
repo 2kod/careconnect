@@ -56,7 +56,7 @@ export const LoginPage = () => {
             Sign In to CareConnect
           </h1>
           <p className="text-slate-600 text-sm mt-1">
-            Access your healthcare bookings and preferences
+            Welcome back. We are glad to see you again.
           </p>
         </div>
 

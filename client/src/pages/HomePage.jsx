@@ -14,7 +14,8 @@ import {
   Activity, 
   Brain, 
   Stethoscope, 
-  Shield 
+  Sparkles,
+  Heart
 } from 'lucide-react';
 import AccessibleButton from '../components/common/AccessibleButton';
 import { useAccessibility } from '../context/AccessibilityContext';
@@ -23,7 +24,7 @@ import { api } from '../services/api';
 const specIconMap = {
   'Stethoscope': Stethoscope,
   'HeartHandshake': HeartHandshake,
-  'Heart': HeartPulse,
+  'Heart': Heart,
   'Eye': Eye,
   'Activity': Activity,
   'Brain': Brain,
@@ -43,7 +44,7 @@ export const HomePage = () => {
           setSpecializations(res.data);
         }
       } catch (e) {
-        console.error('Error fetching specializations:', e);
+        console.error('Error fetching care areas:', e);
       } finally {
         setLoading(false);
       }
@@ -53,37 +54,37 @@ export const HomePage = () => {
 
   const handleReadIntro = () => {
     speak(
-      'Welcome to CareConnect. This healthcare booking platform is designed to be calm, accessible, and simple to use. You can search doctors, choose dates and times without rush, and adjust text size or colors anytime from the top bar.'
+      'Welcome to CareConnect. We are here to make finding and booking a doctor gentle, unhurried, and easy for you and your family. You can look through our doctors, pick a day and time that suits your routine, and listen to any page read aloud whenever you wish.'
     );
   };
 
   return (
     <main id="main-content" className="focus:outline-none">
       
-      {/* 1. Hero Section */}
-      <section className="bg-gradient-to-b from-indigo-50/70 to-white py-12 md:py-20 border-b border-slate-200">
+      {/* 1. Hero Section - Warm, Human & Caring */}
+      <section className="bg-gradient-to-b from-indigo-50/70 via-white to-white py-12 md:py-20 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             
             {/* Pill Header */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-100/90 text-indigo-800 text-sm font-bold border border-indigo-200 mb-6">
-              <HeartPulse className="w-4 h-4 text-indigo-700" aria-hidden="true" />
-              <span>Universal Healthcare Initiative</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-100 text-indigo-900 text-sm font-bold border border-indigo-200 mb-6 shadow-sm">
+              <Heart className="w-4 h-4 text-indigo-600 fill-indigo-600" aria-hidden="true" />
+              <span>Compassionate Care for You & Your Loved Ones</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-6">
-              Healthcare appointment booking that works for everyone.
+              Doctor visits made gentle, unhurried, and simple.
             </h1>
 
             <p className="text-lg md:text-xl text-slate-700 leading-relaxed mb-8">
-              CareConnect is built from the ground up for older adults, people with visual impairments, and first-time digital users. Large text, calm screens, voice assistance, and zero confusion.
+              When you or an elderly family member need to see a doctor, technology should feel like a helping hand — not a puzzle. CareConnect is built with calm screens, big readable letters, and friendly voice guidance so you can book care with total peace of mind.
             </p>
 
             {/* Quick Action Buttons */}
             <div className="flex flex-wrap items-center gap-4">
               <Link to="/doctors">
-                <AccessibleButton size="lg" icon={Search}>
-                  Find & Book a Doctor
+                <AccessibleButton size="lg" icon={Search} className="shadow-md">
+                  Find a Caring Doctor
                 </AccessibleButton>
               </Link>
 
@@ -94,29 +95,29 @@ export const HomePage = () => {
                 onClick={handleReadIntro}
                 ariaLabel="Listen to audio overview of CareConnect"
               >
-                Listen to Audio Guide
+                Listen to Voice Guide
               </AccessibleButton>
 
               <Link to="/accessibility-settings">
                 <AccessibleButton variant="secondary" size="lg">
-                  Accessibility Controls
+                  Adjust Text & Display
                 </AccessibleButton>
               </Link>
             </div>
 
             {/* Reassurance Badges */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12 pt-8 border-t border-slate-200 text-sm text-slate-700">
-              <div className="flex items-center gap-2.5 font-medium">
-                <ShieldCheck className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                <span>No hidden steps or spam</span>
-              </div>
-              <div className="flex items-center gap-2.5 font-medium">
-                <Clock className="w-5 h-5 text-indigo-600 flex-shrink-0" />
-                <span>Instant confirmed slots</span>
-              </div>
-              <div className="flex items-center gap-2.5 font-medium">
+              <div className="flex items-center gap-2.5 font-bold">
                 <HeartHandshake className="w-5 h-5 text-indigo-600 flex-shrink-0" />
-                <span>Easy mistake recovery</span>
+                <span>Doctors who take time to listen</span>
+              </div>
+              <div className="flex items-center gap-2.5 font-bold">
+                <Clock className="w-5 h-5 text-indigo-600 flex-shrink-0" />
+                <span>Clear, unhurried timings</span>
+              </div>
+              <div className="flex items-center gap-2.5 font-bold">
+                <ShieldCheck className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+                <span>Easy mistake recovery & free changes</span>
               </div>
             </div>
 
@@ -124,15 +125,15 @@ export const HomePage = () => {
         </div>
       </section>
 
-      {/* 2. Specializations / Browse Section */}
+      {/* 2. Specializations / Browse Care Categories */}
       <section className="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
-              Select a Healthcare Department
+              What kind of care do you or your family need?
             </h2>
             <p className="text-slate-600 text-base mt-1">
-              Choose the specialty that matches your care needs, or search by doctor name.
+              Select an area of care below, or search for a trusted physician by name.
             </p>
           </div>
           <Link to="/doctors" className="text-indigo-700 font-bold hover:underline flex items-center gap-1.5 text-base">
@@ -141,7 +142,7 @@ export const HomePage = () => {
           </Link>
         </div>
 
-        {/* Specialization Cards Grid */}
+        {/* Care Categories Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {specializations.map((spec) => {
             const IconComponent = specIconMap[spec.icon_name] || Stethoscope;
@@ -157,11 +158,11 @@ export const HomePage = () => {
                 <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-700 transition-colors">
                   {spec.name}
                 </h3>
-                <p className="text-sm text-slate-600 mt-2 line-clamp-2 leading-relaxed">
+                <p className="text-sm text-slate-600 mt-2 line-clamp-3 leading-relaxed">
                   {spec.description}
                 </p>
                 <div className="mt-4 flex items-center text-xs font-bold text-indigo-700 gap-1">
-                  <span>Browse Specialists</span>
+                  <span>See available doctors</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </div>
               </Link>
@@ -170,50 +171,50 @@ export const HomePage = () => {
         </div>
       </section>
 
-      {/* 3. 3-Step Simple Booking Process (Minimal Cognitive Load) */}
-      <section className="bg-slate-100 py-16 border-y border-slate-200">
+      {/* 3. 3-Step Simple Booking Process (Emotional Peace of Mind) */}
+      <section className="bg-slate-100/70 py-16 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
-              Booking Made Simple in 3 Clear Steps
+              Getting the care you need should never feel stressful
             </h2>
             <p className="text-slate-600 text-base mt-2">
-              We eliminated complicated forms so you can secure your appointment with total confidence.
+              We eliminated long forms and tricky screens so you can secure a visit with total confidence.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             {/* Step 1 */}
-            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative">
-              <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white font-black text-xl flex items-center justify-center mb-6">
+            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm relative">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white font-black text-xl flex items-center justify-center mb-6 shadow-sm">
                 1
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Find Your Doctor</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Find a Doctor Who Listens</h3>
               <p className="text-slate-600 leading-relaxed text-base">
-                Search by name or department. Compare verified experience, hospital locations, and transparent consultation fees.
+                Browse physicians by department or name. Read about their background, where their clinic is located, and honest fees upfront.
               </p>
             </div>
 
             {/* Step 2 */}
-            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative">
-              <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white font-black text-xl flex items-center justify-center mb-6">
+            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm relative">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white font-black text-xl flex items-center justify-center mb-6 shadow-sm">
                 2
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Pick a Comfortable Time</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Pick a Time That Fits Your Day</h3>
               <p className="text-slate-600 leading-relaxed text-base">
-                Choose a morning or afternoon time slot. Clear visual indicators show you what is open with no double-booking surprises.
+                Choose a morning or afternoon consultation that feels right for your family. Clear green badges show you what is open with no guesswork.
               </p>
             </div>
 
             {/* Step 3 */}
-            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative">
-              <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white font-black text-xl flex items-center justify-center mb-6">
+            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm relative">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white font-black text-xl flex items-center justify-center mb-6 shadow-sm">
                 3
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Confirmed with Peace of Mind</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Rest Easy, You're Confirmed</h3>
               <p className="text-slate-600 leading-relaxed text-base">
-                Review your appointment summary before confirming. Receive your booking reference, calendar link, and cancellation safeguard.
+                Review your summary and confirm. We will keep your appointment details safe. If your plans change, cancelling or rescheduling is always easy.
               </p>
             </div>
 
@@ -221,8 +222,8 @@ export const HomePage = () => {
 
           <div className="text-center mt-10">
             <Link to="/doctors">
-              <AccessibleButton size="lg">
-                Start Booking Your Appointment Now
+              <AccessibleButton size="lg" className="shadow-md">
+                Find Your Doctor Now
               </AccessibleButton>
             </Link>
           </div>
@@ -234,4 +235,3 @@ export const HomePage = () => {
 };
 
 export default HomePage;
-

@@ -40,9 +40,9 @@ export const AccessibilityBar = () => {
         <div className="flex items-center gap-2">
           <span className="font-semibold flex items-center gap-1.5 text-indigo-300">
             <Eye className="w-4 h-4" aria-hidden="true" />
-            <span>Accessibility Bar:</span>
+            <span>Comfort Bar:</span>
           </span>
-          <span className="text-slate-400 text-xs hidden sm:inline">Customize visual & audio settings</span>
+          <span className="text-slate-400 text-xs hidden sm:inline">Customize text & sound to your comfort</span>
         </div>
 
         {/* Center / Right: Accessibility Quick Actions */}
@@ -131,10 +131,10 @@ export const AccessibilityBar = () => {
           <Link
             to="/accessibility-settings"
             className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800"
-            title="Open comprehensive accessibility settings"
+            title="Open comfort and accessibility settings"
           >
             <Settings className="w-3.5 h-3.5" aria-hidden="true" />
-            <span className="hidden md:inline">A11y Guide</span>
+            <span className="hidden md:inline">Settings</span>
           </Link>
         </div>
       </div>

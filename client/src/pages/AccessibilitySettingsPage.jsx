@@ -65,13 +65,13 @@ export const AccessibilitySettingsPage = () => {
       {/* Title */}
       <div className="mb-8">
         <span className="text-xs uppercase tracking-wider font-bold text-indigo-700 bg-indigo-100 px-2.5 py-1 rounded-md">
-          Universal Access
+          Comfort & Ease
         </span>
         <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight mt-1">
-          Accessibility Center & Usability Guide
+          Making CareConnect Comfortable For You
         </h1>
         <p className="text-slate-600 text-lg mt-1">
-          Personalize typography, visual contrast, and audio assistance to match your specific needs.
+          Adjust text size, turn on gentle voice reading, or enable high-contrast colors so reading and booking feels completely effortless.
         </p>
       </div>
 
@@ -96,10 +96,10 @@ export const AccessibilitySettingsPage = () => {
             </div>
             <div>
               <h2 id="font-size-heading" className="text-xl font-bold text-slate-900">
-                Text & Typography Sizing
+                Text Size
               </h2>
               <p className="text-sm text-slate-600">
-                Adjust base font dimensions across the entire application.
+                Choose the text size that feels most comfortable and easy on your eyes.
               </p>
             </div>
           </div>
@@ -166,10 +166,10 @@ export const AccessibilitySettingsPage = () => {
               </div>
               <div>
                 <h2 id="contrast-heading" className="text-xl font-bold text-slate-900">
-                  High-Contrast Visual Mode (WCAG 2.1 AAA)
+                  High-Contrast Mode
                 </h2>
                 <p className="text-sm text-slate-600">
-                  Enhances borders, darkens backgrounds, and ensures maximum contrast for low-vision users.
+                  Crisp black-and-gold styling with sharp borders to make every word and button pop out clearly.
                 </p>
               </div>
             </div>
@@ -202,10 +202,10 @@ export const AccessibilitySettingsPage = () => {
               </div>
               <div>
                 <h2 id="voice-heading" className="text-xl font-bold text-slate-900">
-                  Multimodal Speech Assistance (TTS)
+                  Gentle Voice Reading
                 </h2>
                 <p className="text-sm text-slate-600">
-                  Reads out page headlines, doctor profiles, and booking status prompts aloud using browser speech synthesis.
+                  Listen to doctor bios, visit times, and booking instructions read aloud to you clearly whenever you need.
                 </p>
               </div>
             </div>
@@ -253,30 +253,30 @@ export const AccessibilitySettingsPage = () => {
           </AccessibleButton>
         </div>
 
-        {/* 4. Usability Evaluation & Accessibility Guidelines */}
-        <section aria-labelledby="academic-heading" className="bg-slate-900 text-white p-8 rounded-3xl mt-12 border border-slate-800">
+        {/* 4. Our Promise to You and Your Family */}
+        <section aria-labelledby="promise-heading" className="bg-slate-900 text-white p-8 rounded-3xl mt-12 border border-slate-800">
           <span className="text-xs uppercase tracking-wider font-bold text-indigo-300 bg-slate-800 px-3 py-1 rounded-md">
-            Design Standards
+            Our Care Promise
           </span>
-          <h2 id="academic-heading" className="text-2xl font-black mt-2 mb-4">
-            Universal Usability Principles & Accessibility Guidelines
+          <h2 id="promise-heading" className="text-2xl font-black mt-2 mb-4">
+            Why we made CareConnect gentle and simple
           </h2>
           <div className="space-y-4 text-sm text-slate-300 leading-relaxed">
             <div className="p-4 bg-slate-800/80 rounded-2xl border border-slate-700">
-              <strong className="text-white block mb-1">1. Visibility of System Status (Heuristic #1):</strong>
-              Visual 4-step progress stepper displays current stage, past completed steps, and clear status badges.
+              <strong className="text-white block mb-1">Clear guidance every step of the way:</strong>
+              We show you exactly where you are in the booking process. You never have to guess what happens next.
             </div>
             <div className="p-4 bg-slate-800/80 rounded-2xl border border-slate-700">
-              <strong className="text-white block mb-1">2. Error Prevention & Safe Recovery (Heuristic #5 & #9):</strong>
-              PostgreSQL row-level locking (`SELECT ... FOR UPDATE`) prevents concurrent double-booking. Confirmation modals protect against accidental appointment cancellations.
+              <strong className="text-white block mb-1">Total protection from mistakes:</strong>
+              If you click the wrong button or change your mind, don't worry. You can always go back, review your summary, or cancel with zero penalty.
             </div>
             <div className="p-4 bg-slate-800/80 rounded-2xl border border-slate-700">
-              <strong className="text-white block mb-1">3. Recognition Rather than Recall (Heuristic #6):</strong>
-              Booking summary cards persistently display selected doctor, date, and fee during the confirmation step so users never have to memorize details.
+              <strong className="text-white block mb-1">No memorizing required:</strong>
+              We keep your doctor's name, clinic address, and appointment time clearly displayed on screen so you never feel rushed.
             </div>
             <div className="p-4 bg-slate-800/80 rounded-2xl border border-slate-700">
-              <strong className="text-white block mb-1">4. Universal Design & WCAG 2.1 AA/AAA:</strong>
-              Dual encoding with both colors and explicit text ("Available" / "Booked"), minimum 48px touch targets, full keyboard tab-order, and zero trap doors.
+              <strong className="text-white block mb-1">Designed for all eyes and hands:</strong>
+              Buttons are large and easy to tap, words are crisp and clear, and voice reading is always one click away.
             </div>
           </div>
         </section>

@@ -3,9 +3,9 @@ import { Check, Calendar, Clock, UserCheck, ShieldCheck } from 'lucide-react';
 
 const steps = [
   { id: 1, name: 'Select Doctor', icon: UserCheck },
-  { id: 2, name: 'Date & Time Slot', icon: Calendar },
+  { id: 2, name: 'Day & Time', icon: Calendar },
   { id: 3, name: 'Review Details', icon: Clock },
-  { id: 4, name: 'Confirmed', icon: ShieldCheck },
+  { id: 4, name: "You're All Set!", icon: ShieldCheck },
 ];
 
 export const BookingStepper = ({ currentStep = 1 }) => {

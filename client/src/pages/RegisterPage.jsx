@@ -62,10 +62,10 @@ export const RegisterPage = () => {
             <HeartPulse className="w-8 h-8" />
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-slate-900">
-            Create Patient Account
+            Join CareConnect
           </h1>
           <p className="text-slate-600 text-sm mt-1">
-            Sign up to securely book and manage your healthcare visits
+            Sign up to easily book and manage your healthcare visits in a calm, supportive space.
           </p>
         </div>
 
