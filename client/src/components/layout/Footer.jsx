@@ -1,82 +1,49 @@
 import React from 'react';
-import { HeartPulse, CheckCircle2, Keyboard, Shield } from 'lucide-react';
+import { HeartPulse } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
-    <footer className="bg-slate-900 text-slate-300 mt-20 border-t border-slate-800" aria-label="CareConnect footer">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+    <footer className="bg-slate-900 text-slate-400 mt-20 border-t border-slate-800" aria-label="CareConnect footer">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           
-          {/* Brand & Academic Context */}
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center text-slate-950 font-bold">
-                <HeartPulse className="w-5 h-5 text-white" aria-hidden="true" />
+          {/* Brand & Tagline */}
+          <div className="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+            <Link 
+              to="/" 
+              className="flex items-center gap-2.5 text-white font-bold text-lg hover:text-indigo-400 transition-colors"
+            >
+              <div className="w-8 h-8 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-sm">
+                <HeartPulse className="w-5 h-5" aria-hidden="true" />
               </div>
-              <span className="text-xl font-bold text-white tracking-tight">CareConnect</span>
-            </div>
-            <p className="text-slate-400 text-sm leading-relaxed mb-3">
-              An accessible, universal healthcare appointment booking web application built according to Nielsen's Usability Heuristics and WCAG 2.1 guidelines.
+              <span className="text-xl font-black tracking-tight text-white">CareConnect</span>
+            </Link>
+            <span className="hidden sm:inline text-slate-600">•</span>
+            <p className="text-sm text-slate-400">
+              Healthcare appointment booking designed for everyone
             </p>
-            <div className="text-xs text-indigo-400 font-medium">
-              Manipal University Jaipur
-            </div>
           </div>
 
-          {/* Universal Accessibility Guarantees */}
-          <div>
-            <h3 className="text-white font-semibold text-base mb-3 flex items-center gap-2">
-              <Shield className="w-4 h-4 text-indigo-400" aria-hidden="true" />
-              <span>Universal Design Standards</span>
-            </h3>
-            <ul className="space-y-2 text-sm text-slate-400">
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>WCAG 2.1 AA/AAA Contrast & Large Touch Targets</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>Full Keyboard Operability & Zero Focus Traps</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>Multimodal Audio (Text-to-Speech) Guidance</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>Double-Booking Concurrency Protection</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Keyboard Shortcuts Guide */}
-          <div>
-            <h3 className="text-white font-semibold text-base mb-3 flex items-center gap-2">
-              <Keyboard className="w-4 h-4 text-indigo-400" aria-hidden="true" />
-              <span>Accessibility Navigation Tips</span>
-            </h3>
-            <div className="space-y-1.5 text-xs text-slate-400">
-              <p><kbd className="px-1.5 py-0.5 bg-slate-800 border border-slate-700 rounded text-slate-200">Tab</kbd> Move focus forward</p>
-              <p><kbd className="px-1.5 py-0.5 bg-slate-800 border border-slate-700 rounded text-slate-200">Shift + Tab</kbd> Move focus backward</p>
-              <p><kbd className="px-1.5 py-0.5 bg-slate-800 border border-slate-700 rounded text-slate-200">Enter / Space</kbd> Activate buttons and slots</p>
-              <p><kbd className="px-1.5 py-0.5 bg-slate-800 border border-slate-700 rounded text-slate-200">Esc</kbd> Close popups and dialogs</p>
-            </div>
-            <div className="mt-4">
-              <Link 
-                to="/accessibility-settings" 
-                className="text-xs text-indigo-400 underline hover:text-indigo-300 font-semibold"
-              >
-                Open Full Accessibility Guide & Controls →
-              </Link>
-            </div>
-          </div>
+          {/* Quick Navigation Links */}
+          <nav className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium" aria-label="Footer navigation">
+            <Link to="/doctors" className="text-slate-300 hover:text-white transition-colors">
+              Find Doctors
+            </Link>
+            <Link to="/dashboard" className="text-slate-300 hover:text-white transition-colors">
+              My Appointments
+            </Link>
+            <Link to="/accessibility-settings" className="text-slate-300 hover:text-white transition-colors">
+              Accessibility Settings
+            </Link>
+          </nav>
 
         </div>
 
-        <div className="border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <p>© 2026 CareConnect. Academic Demonstration. Fictional healthcare data for research.</p>
-          <p className="text-slate-400 font-medium">Built with React, Tailwind CSS, Express, and PostgreSQL</p>
+        {/* Bottom copyright line */}
+        <div className="border-t border-slate-800/80 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
+          <p>© 2026 CareConnect • Manipal University Jaipur</p>
+          <p className="text-slate-500">Universal Healthcare Accessibility</p>
         </div>
       </div>
     </footer>
@@ -84,4 +51,3 @@ export const Footer = () => {
 };
 
 export default Footer;
-
