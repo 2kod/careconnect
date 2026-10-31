@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import pool from '../config/database.js';
 
-async function runSeed() {
+export async function runSeed(shouldClosePool = true) {
   console.log('🌱 Starting database seeding for CareConnect (Patient-Centered Care)...');
   const client = await pool.connect();
 
@@ -221,11 +221,17 @@ async function runSeed() {
   } catch (err) {
     await client.query('ROLLBACK');
     console.error('❌ Seeding error:', err);
-    process.exit(1);
+    throw err;
   } finally {
     client.release();
-    await pool.end();
+    if (shouldClosePool) {
+      await pool.end();
+    }
   }
 }
 
-runSeed();
+if (process.argv[1] && process.argv[1].endsWith('seed.js')) {
+  runSeed(true).catch(() => process.exit(1));
+}
+
+export default runSeed;

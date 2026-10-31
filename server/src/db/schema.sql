@@ -1,5 +1,11 @@
--- Enable UUID extension
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+-- Enable UUID extension if available
+DO $$
+BEGIN
+    CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+    CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+EXCEPTION
+    WHEN OTHERS THEN NULL;
+END $$;
 
 -- Drop tables if resetting (in dependency order)
 DROP TABLE IF EXISTS appointments CASCADE;
@@ -11,7 +17,7 @@ DROP TABLE IF EXISTS specializations CASCADE;
 
 -- 1. Specializations Table
 CREATE TABLE specializations (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name VARCHAR(100) NOT NULL UNIQUE,
     description TEXT,
     icon_name VARCHAR(50) DEFAULT 'Stethoscope',
@@ -20,7 +26,7 @@ CREATE TABLE specializations (
 
 -- 2. Users Table
 CREATE TABLE users (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     full_name VARCHAR(150) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
@@ -43,7 +49,7 @@ CREATE TABLE user_accessibility_preferences (
 
 -- 4. Doctors Table
 CREATE TABLE doctors (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     specialization_id UUID NOT NULL REFERENCES specializations(id) ON DELETE RESTRICT,
     full_name VARCHAR(150) NOT NULL,
     qualification VARCHAR(100) NOT NULL,
@@ -58,7 +64,7 @@ CREATE TABLE doctors (
 
 -- 5. Appointment Slots Table
 CREATE TABLE appointment_slots (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     doctor_id UUID NOT NULL REFERENCES doctors(id) ON DELETE CASCADE,
     slot_date DATE NOT NULL,
     start_time TIME NOT NULL,
@@ -72,7 +78,7 @@ CREATE TABLE appointment_slots (
 
 -- 6. Appointments Table
 CREATE TABLE appointments (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     doctor_id UUID NOT NULL REFERENCES doctors(id) ON DELETE RESTRICT,
     slot_id UUID NOT NULL UNIQUE REFERENCES appointment_slots(id) ON DELETE RESTRICT,
