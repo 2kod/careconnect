@@ -40,12 +40,9 @@ export const Navbar = () => {
             <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-md group-hover:bg-indigo-700 transition-colors flex-shrink-0">
               <HeartPulse className="w-6 h-6" aria-hidden="true" />
             </div>
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center">
               <span className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 whitespace-nowrap">
                 CareConnect
-              </span>
-              <span className="hidden xl:inline-block text-[11px] px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-bold border border-indigo-200 uppercase tracking-wide whitespace-nowrap">
-                Accessible Healthcare
               </span>
             </div>
           </Link>
