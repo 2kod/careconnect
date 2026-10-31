@@ -23,7 +23,7 @@ export const Navbar = () => {
       {/* WCAG 2.4.1: Skip to main content link for keyboard-only users */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-teal-700 focus:text-white focus:rounded-lg focus:shadow-xl focus:outline-none"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-indigo-700 focus:text-white focus:rounded-lg focus:shadow-xl focus:outline-none"
       >
         Skip to main content
       </a>
@@ -34,16 +34,16 @@ export const Navbar = () => {
           {/* Logo & Brand */}
           <Link 
             to="/" 
-            className="flex items-center gap-3 group focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-500 rounded-xl p-1"
+            className="flex items-center gap-3 group focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-500 rounded-xl p-1"
             aria-label="CareConnect Homepage"
           >
-            <div className="w-12 h-12 rounded-2xl bg-teal-600 flex items-center justify-center text-white shadow-md group-hover:bg-teal-700 transition-colors">
+            <div className="w-12 h-12 rounded-2xl bg-indigo-600 flex items-center justify-center text-white shadow-md group-hover:bg-indigo-700 transition-colors">
               <HeartPulse className="w-7 h-7" aria-hidden="true" />
             </div>
             <div>
               <span className="text-2xl font-black tracking-tight text-slate-900 flex items-center gap-1.5">
                 CareConnect
-                <span className="text-xs px-2 py-0.5 rounded-full bg-teal-100 text-teal-800 font-bold border border-teal-200 uppercase tracking-wide">
+                <span className="text-xs px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800 font-bold border border-indigo-200 uppercase tracking-wide">
                   HCI Accessible
                 </span>
               </span>
@@ -57,8 +57,8 @@ export const Navbar = () => {
               to="/doctors"
               className={`px-4 py-2.5 rounded-xl font-semibold text-base transition-colors ${
                 isActive('/doctors')
-                  ? 'bg-teal-50 text-teal-800 border border-teal-200'
-                  : 'text-slate-700 hover:text-teal-700 hover:bg-slate-50'
+                  ? 'bg-indigo-50 text-indigo-800 border border-indigo-200'
+                  : 'text-slate-700 hover:text-indigo-700 hover:bg-slate-50'
               }`}
             >
               Find Doctors
@@ -68,11 +68,11 @@ export const Navbar = () => {
               to="/dashboard"
               className={`px-4 py-2.5 rounded-xl font-semibold text-base transition-colors flex items-center gap-2 ${
                 isActive('/dashboard')
-                  ? 'bg-teal-50 text-teal-800 border border-teal-200'
-                  : 'text-slate-700 hover:text-teal-700 hover:bg-slate-50'
+                  ? 'bg-indigo-50 text-indigo-800 border border-indigo-200'
+                  : 'text-slate-700 hover:text-indigo-700 hover:bg-slate-50'
               }`}
             >
-              <Calendar className="w-4 h-4 text-teal-600" aria-hidden="true" />
+              <Calendar className="w-4 h-4 text-indigo-600" aria-hidden="true" />
               <span>My Appointments</span>
             </Link>
 
@@ -80,8 +80,8 @@ export const Navbar = () => {
               to="/accessibility-settings"
               className={`px-4 py-2.5 rounded-xl font-semibold text-base transition-colors ${
                 isActive('/accessibility-settings')
-                  ? 'bg-teal-50 text-teal-800 border border-teal-200'
-                  : 'text-slate-700 hover:text-teal-700 hover:bg-slate-50'
+                  ? 'bg-indigo-50 text-indigo-800 border border-indigo-200'
+                  : 'text-slate-700 hover:text-indigo-700 hover:bg-slate-50'
               }`}
             >
               Accessibility Settings
@@ -129,7 +129,7 @@ export const Navbar = () => {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-              className="p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-500"
+              className="p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-500"
             >
               {mobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
             </button>
@@ -144,21 +144,21 @@ export const Navbar = () => {
           <Link
             to="/doctors"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-4 py-3 rounded-xl font-bold text-lg text-slate-800 hover:bg-teal-50 hover:text-teal-800"
+            className="block px-4 py-3 rounded-xl font-bold text-lg text-slate-800 hover:bg-indigo-50 hover:text-indigo-800"
           >
             Find Doctors
           </Link>
           <Link
             to="/dashboard"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-4 py-3 rounded-xl font-bold text-lg text-slate-800 hover:bg-teal-50 hover:text-teal-800"
+            className="block px-4 py-3 rounded-xl font-bold text-lg text-slate-800 hover:bg-indigo-50 hover:text-indigo-800"
           >
             My Appointments
           </Link>
           <Link
             to="/accessibility-settings"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-4 py-3 rounded-xl font-bold text-lg text-slate-800 hover:bg-teal-50 hover:text-teal-800"
+            className="block px-4 py-3 rounded-xl font-bold text-lg text-slate-800 hover:bg-indigo-50 hover:text-indigo-800"
           >
             Accessibility Settings & Help
           </Link>

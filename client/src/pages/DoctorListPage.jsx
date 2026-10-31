@@ -140,7 +140,7 @@ export const DoctorListPage = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="e.g. Dr. Anita, Cardiology, Heart, Bone..."
-              className="w-full pl-12 pr-12 py-3.5 bg-slate-50 border-2 border-slate-300 rounded-xl text-slate-900 text-base focus:bg-white focus:border-teal-600 focus:outline-none transition-colors"
+              className="w-full pl-12 pr-12 py-3.5 bg-slate-50 border-2 border-slate-300 rounded-xl text-slate-900 text-base focus:bg-white focus:border-indigo-600 focus:outline-none transition-colors"
             />
             {searchTerm && (
               <button
@@ -171,7 +171,7 @@ export const DoctorListPage = () => {
               aria-pressed={!selectedSpec}
               className={`px-4 py-2.5 rounded-xl font-bold text-sm border transition-all ${
                 !selectedSpec
-                  ? 'bg-teal-700 text-white border-teal-700 shadow-sm'
+                  ? 'bg-indigo-700 text-white border-indigo-700 shadow-sm'
                   : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
               }`}
             >
@@ -188,7 +188,7 @@ export const DoctorListPage = () => {
                   aria-pressed={isSelected}
                   className={`px-4 py-2.5 rounded-xl font-bold text-sm border transition-all ${
                     isSelected
-                      ? 'bg-teal-700 text-white border-teal-700 shadow-sm'
+                      ? 'bg-indigo-700 text-white border-indigo-700 shadow-sm'
                       : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
                   }`}
                 >
@@ -208,7 +208,7 @@ export const DoctorListPage = () => {
             <button
               type="button"
               onClick={handleClearFilters}
-              className="text-teal-700 font-bold hover:underline flex items-center gap-1"
+              className="text-indigo-700 font-bold hover:underline flex items-center gap-1"
             >
               <X className="w-4 h-4" />
               <span>Reset all filters</span>
@@ -221,13 +221,13 @@ export const DoctorListPage = () => {
       {/* Results Section */}
       {loading ? (
         <div className="text-center py-20" role="status" aria-label="Loading available doctors">
-          <div className="inline-block w-12 h-12 border-4 border-teal-600 border-t-transparent rounded-full animate-spin mb-4" />
+          <div className="inline-block w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin mb-4" />
           <p className="text-lg font-bold text-slate-700">Finding healthcare specialists...</p>
         </div>
       ) : doctors.length === 0 ? (
         /* Helpful Empty State */
         <div className="bg-white rounded-2xl border-2 border-dashed border-slate-300 p-12 text-center max-w-xl mx-auto">
-          <div className="w-16 h-16 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center mx-auto mb-4">
+          <div className="w-16 h-16 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mx-auto mb-4">
             <Search className="w-8 h-8" />
           </div>
           <h2 className="text-2xl font-bold text-slate-900 mb-2">No doctors matched your criteria</h2>
@@ -244,7 +244,7 @@ export const DoctorListPage = () => {
           {doctors.map((doctor) => (
             <article
               key={doctor.id}
-              className="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-teal-500 transition-all overflow-hidden flex flex-col justify-between"
+              className="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-500 transition-all overflow-hidden flex flex-col justify-between"
             >
               <div>
                 {/* Doctor Header Banner with Photo */}
@@ -256,7 +256,7 @@ export const DoctorListPage = () => {
                     loading="lazy"
                   />
                   <div>
-                    <span className="inline-block px-2.5 py-1 rounded-md bg-teal-100 text-teal-800 text-xs font-bold uppercase tracking-wider mb-1">
+                    <span className="inline-block px-2.5 py-1 rounded-md bg-indigo-100 text-indigo-800 text-xs font-bold uppercase tracking-wider mb-1">
                       {doctor.specialization_name}
                     </span>
                     <h2 className="text-xl font-bold text-slate-900 leading-snug">
@@ -271,12 +271,12 @@ export const DoctorListPage = () => {
                 {/* Doctor Bio and Highlights */}
                 <div className="p-6 space-y-3 text-sm text-slate-600">
                   <div className="flex items-center gap-2 text-slate-700">
-                    <Briefcase className="w-4 h-4 text-teal-600 flex-shrink-0" aria-hidden="true" />
+                    <Briefcase className="w-4 h-4 text-indigo-600 flex-shrink-0" aria-hidden="true" />
                     <span><strong>{doctor.experience_years} years</strong> clinical experience</span>
                   </div>
 
                   <div className="flex items-center gap-2 text-slate-700">
-                    <MapPin className="w-4 h-4 text-teal-600 flex-shrink-0" aria-hidden="true" />
+                    <MapPin className="w-4 h-4 text-indigo-600 flex-shrink-0" aria-hidden="true" />
                     <span className="truncate">{doctor.hospital_clinic_name}</span>
                   </div>
 

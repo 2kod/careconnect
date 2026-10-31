@@ -64,7 +64,7 @@ export const AccessibilitySettingsPage = () => {
       
       {/* Title */}
       <div className="mb-8">
-        <span className="text-xs uppercase tracking-wider font-bold text-teal-700 bg-teal-100 px-2.5 py-1 rounded-md">
+        <span className="text-xs uppercase tracking-wider font-bold text-indigo-700 bg-indigo-100 px-2.5 py-1 rounded-md">
           Universal Access
         </span>
         <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight mt-1">
@@ -91,7 +91,7 @@ export const AccessibilitySettingsPage = () => {
         {/* 1. Visual Typography Sizing */}
         <section aria-labelledby="font-size-heading" className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-lg">
+            <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-lg">
               A
             </div>
             <div>
@@ -111,7 +111,7 @@ export const AccessibilitySettingsPage = () => {
               aria-pressed={fontSize === 'normal'}
               className={`p-4 rounded-2xl border-2 text-center transition-all ${
                 fontSize === 'normal'
-                  ? 'border-teal-600 bg-teal-50/60 font-bold text-slate-950 ring-2 ring-teal-500/20'
+                  ? 'border-indigo-600 bg-indigo-50/60 font-bold text-slate-950 ring-2 ring-indigo-500/20'
                   : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
               }`}
             >
@@ -125,7 +125,7 @@ export const AccessibilitySettingsPage = () => {
               aria-pressed={fontSize === 'large'}
               className={`p-4 rounded-2xl border-2 text-center transition-all ${
                 fontSize === 'large'
-                  ? 'border-teal-600 bg-teal-50/60 font-bold text-slate-950 ring-2 ring-teal-500/20'
+                  ? 'border-indigo-600 bg-indigo-50/60 font-bold text-slate-950 ring-2 ring-indigo-500/20'
                   : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
               }`}
             >
@@ -139,7 +139,7 @@ export const AccessibilitySettingsPage = () => {
               aria-pressed={fontSize === 'x-large'}
               className={`p-4 rounded-2xl border-2 text-center transition-all ${
                 fontSize === 'x-large'
-                  ? 'border-teal-600 bg-teal-50/60 font-bold text-slate-950 ring-2 ring-teal-500/20'
+                  ? 'border-indigo-600 bg-indigo-50/60 font-bold text-slate-950 ring-2 ring-indigo-500/20'
                   : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
               }`}
             >
@@ -157,94 +157,11 @@ export const AccessibilitySettingsPage = () => {
           </div>
         </section>
 
-        {/* 2. Color Palette & Tone Theme */}
-        <section aria-labelledby="theme-palette-heading" className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center">
-              <Sliders className="w-5 h-5" />
-            </div>
-            <div>
-              <h2 id="theme-palette-heading" className="text-xl font-bold text-slate-900">
-                Color Palette & Visual Tone
-              </h2>
-              <p className="text-sm text-slate-600">
-                Select your preferred soothing healthcare palette. Changes apply immediately across all screens.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {/* Indigo & Lavender */}
-            <button
-              type="button"
-              onClick={() => setColorTheme('indigo')}
-              aria-pressed={colorTheme === 'indigo'}
-              className={`p-5 rounded-2xl border-2 text-left transition-all ${
-                colorTheme === 'indigo'
-                  ? 'border-indigo-600 bg-indigo-50/70 shadow-sm ring-2 ring-indigo-500/20'
-                  : 'border-slate-200 bg-slate-50 hover:bg-slate-100'
-              }`}
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <span className="w-4 h-4 rounded-full bg-indigo-600 border border-indigo-400" />
-                <span className="w-4 h-4 rounded-full bg-indigo-200 border border-indigo-300" />
-                <span className="text-xs font-bold text-indigo-800 uppercase tracking-wider ml-auto">Active</span>
-              </div>
-              <h3 className="font-bold text-base text-slate-900">Warm Indigo & Lavender</h3>
-              <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                Distinguished and gentle on tired eyes. 8.5:1 WCAG AAA high contrast ratio.
-              </p>
-            </button>
-
-            {/* Ocean Blue */}
-            <button
-              type="button"
-              onClick={() => setColorTheme('blue')}
-              aria-pressed={colorTheme === 'blue'}
-              className={`p-5 rounded-2xl border-2 text-left transition-all ${
-                colorTheme === 'blue'
-                  ? 'border-blue-600 bg-blue-50/70 shadow-sm ring-2 ring-blue-500/20'
-                  : 'border-slate-200 bg-slate-50 hover:bg-slate-100'
-              }`}
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <span className="w-4 h-4 rounded-full bg-blue-600 border border-blue-400" />
-                <span className="w-4 h-4 rounded-full bg-blue-200 border border-blue-300" />
-              </div>
-              <h3 className="font-bold text-base text-slate-900">Clinical Ocean Blue</h3>
-              <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                Modern, trustworthy hospital SaaS palette with crisp, clean contrast.
-              </p>
-            </button>
-
-            {/* Emerald Sage */}
-            <button
-              type="button"
-              onClick={() => setColorTheme('emerald')}
-              aria-pressed={colorTheme === 'emerald'}
-              className={`p-5 rounded-2xl border-2 text-left transition-all ${
-                colorTheme === 'emerald'
-                  ? 'border-emerald-600 bg-emerald-50/70 shadow-sm ring-2 ring-emerald-500/20'
-                  : 'border-slate-200 bg-slate-50 hover:bg-slate-100'
-              }`}
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <span className="w-4 h-4 rounded-full bg-emerald-600 border border-emerald-400" />
-                <span className="w-4 h-4 rounded-full bg-emerald-200 border border-emerald-300" />
-              </div>
-              <h3 className="font-bold text-base text-slate-900">Sage & Emerald Health</h3>
-              <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                Organic, calming botanical tones inspired by holistic wellness.
-              </p>
-            </button>
-          </div>
-        </section>
-
-        {/* 3. Visual Contrast & Themes */}
+        {/* 2. Visual Contrast & Themes */}
         <section aria-labelledby="contrast-heading" className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center">
                 <Eye className="w-5 h-5" />
               </div>
               <div>
@@ -262,7 +179,7 @@ export const AccessibilitySettingsPage = () => {
               role="switch"
               aria-checked={highContrast}
               onClick={toggleHighContrast}
-              className={`relative inline-flex h-8 w-14 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-500 ${
+              className={`relative inline-flex h-8 w-14 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-500 ${
                 highContrast ? 'bg-yellow-400' : 'bg-slate-300'
               }`}
             >
@@ -280,7 +197,7 @@ export const AccessibilitySettingsPage = () => {
         <section aria-labelledby="voice-heading" className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
           <div className="flex items-start justify-between gap-4 mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center">
                 <Volume2 className="w-5 h-5" />
               </div>
               <div>
@@ -298,8 +215,8 @@ export const AccessibilitySettingsPage = () => {
               role="switch"
               aria-checked={voiceGuidance}
               onClick={toggleVoiceGuidance}
-              className={`relative inline-flex h-8 w-14 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-500 ${
-                voiceGuidance ? 'bg-teal-600' : 'bg-slate-300'
+              className={`relative inline-flex h-8 w-14 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-500 ${
+                voiceGuidance ? 'bg-indigo-600' : 'bg-slate-300'
               }`}
             >
               <span
@@ -338,7 +255,7 @@ export const AccessibilitySettingsPage = () => {
 
         {/* 4. Academic Evaluation Matrix / HCI Theory Guide */}
         <section aria-labelledby="academic-heading" className="bg-slate-900 text-white p-8 rounded-3xl mt-12 border border-slate-800">
-          <span className="text-xs uppercase tracking-wider font-bold text-teal-300 bg-slate-800 px-3 py-1 rounded-md">
+          <span className="text-xs uppercase tracking-wider font-bold text-indigo-300 bg-slate-800 px-3 py-1 rounded-md">
             Academic Project Documentation
           </span>
           <h2 id="academic-heading" className="text-2xl font-black mt-2 mb-4">

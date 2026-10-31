@@ -27,7 +27,7 @@ function NotFoundPage() {
         </p>
         <Link
           to="/"
-          className="inline-block px-6 py-3.5 bg-teal-600 text-white font-bold rounded-xl hover:bg-teal-700"
+          className="inline-block px-6 py-3.5 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700"
         >
           Return to Homepage
         </Link>

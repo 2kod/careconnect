@@ -49,7 +49,7 @@ export const LoginPage = () => {
         
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="w-14 h-14 rounded-2xl bg-teal-600 text-white flex items-center justify-center mx-auto mb-3 shadow-md">
+          <div className="w-14 h-14 rounded-2xl bg-indigo-600 text-white flex items-center justify-center mx-auto mb-3 shadow-md">
             <HeartPulse className="w-8 h-8" />
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-slate-900">
@@ -61,8 +61,8 @@ export const LoginPage = () => {
         </div>
 
         {/* Demo Fill Pill for Evaluators & Teachers */}
-        <div className="mb-6 bg-teal-50 border border-teal-200 rounded-2xl p-4 text-center">
-          <span className="text-xs font-bold uppercase tracking-wider text-teal-800 block mb-1">
+        <div className="mb-6 bg-indigo-50 border border-indigo-200 rounded-2xl p-4 text-center">
+          <span className="text-xs font-bold uppercase tracking-wider text-indigo-800 block mb-1">
             🎓 Academic Evaluation / Viva Quick Access
           </span>
           <p className="text-xs text-slate-600 mb-2">
@@ -72,7 +72,7 @@ export const LoginPage = () => {
             variant="secondary"
             size="sm"
             onClick={handleFillDemo}
-            className="w-full text-xs font-bold text-teal-800 border-teal-300"
+            className="w-full text-xs font-bold text-indigo-800 border-indigo-300"
             icon={Sparkles}
           >
             Auto-Fill Demo Patient Credentials
@@ -101,7 +101,7 @@ export const LoginPage = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="e.g. name@example.com"
-              className="w-full p-3.5 bg-slate-50 border-2 border-slate-200 rounded-xl text-slate-900 text-base focus:bg-white focus:border-teal-600 focus:outline-none transition-colors"
+              className="w-full p-3.5 bg-slate-50 border-2 border-slate-200 rounded-xl text-slate-900 text-base focus:bg-white focus:border-indigo-600 focus:outline-none transition-colors"
             />
           </div>
 
@@ -118,7 +118,7 @@ export const LoginPage = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
-                className="w-full pl-3.5 pr-12 py-3.5 bg-slate-50 border-2 border-slate-200 rounded-xl text-slate-900 text-base focus:bg-white focus:border-teal-600 focus:outline-none transition-colors"
+                className="w-full pl-3.5 pr-12 py-3.5 bg-slate-50 border-2 border-slate-200 rounded-xl text-slate-900 text-base focus:bg-white focus:border-indigo-600 focus:outline-none transition-colors"
               />
               <button
                 type="button"
@@ -145,7 +145,7 @@ export const LoginPage = () => {
         {/* Register link */}
         <div className="mt-8 pt-6 border-t border-slate-100 text-center text-sm text-slate-600">
           <span>First time using CareConnect? </span>
-          <Link to="/register" className="font-bold text-teal-700 hover:underline">
+          <Link to="/register" className="font-bold text-indigo-700 hover:underline">
             Create an Account
           </Link>
         </div>

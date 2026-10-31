@@ -25,7 +25,7 @@ export const BookingStepper = ({ currentStep = 1 }) => {
               className={`
                 flex items-center gap-3 p-3.5 rounded-2xl border transition-all
                 ${isCurrent 
-                  ? 'bg-teal-50 border-teal-500 shadow-sm ring-2 ring-teal-500/20' 
+                  ? 'bg-indigo-50 border-indigo-500 shadow-sm ring-2 ring-indigo-500/20' 
                   : isCompleted 
                     ? 'bg-emerald-50/60 border-emerald-300 text-slate-800' 
                     : 'bg-white border-slate-200 text-slate-400'
@@ -37,7 +37,7 @@ export const BookingStepper = ({ currentStep = 1 }) => {
                 className={`
                   w-9 h-9 rounded-xl flex items-center justify-center font-bold text-sm flex-shrink-0 transition-colors
                   ${isCurrent
-                    ? 'bg-teal-600 text-white'
+                    ? 'bg-indigo-600 text-white'
                     : isCompleted
                       ? 'bg-emerald-600 text-white'
                       : 'bg-slate-100 text-slate-500'
@@ -53,7 +53,7 @@ export const BookingStepper = ({ currentStep = 1 }) => {
 
               {/* Text label */}
               <div className="overflow-hidden">
-                <p className={`text-xs uppercase tracking-wider font-bold ${isCurrent ? 'text-teal-700' : 'text-slate-500'}`}>
+                <p className={`text-xs uppercase tracking-wider font-bold ${isCurrent ? 'text-indigo-700' : 'text-slate-500'}`}>
                   Step {step.id}
                 </p>
                 <p className={`text-sm font-semibold truncate ${isCurrent ? 'text-slate-900 font-bold' : isCompleted ? 'text-slate-900' : 'text-slate-500'}`}>

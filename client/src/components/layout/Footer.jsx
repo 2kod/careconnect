@@ -11,7 +11,7 @@ export const Footer = () => {
           {/* Brand & Academic Context */}
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-teal-500 flex items-center justify-center text-slate-950 font-bold">
+              <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center text-slate-950 font-bold">
                 <HeartPulse className="w-5 h-5 text-white" aria-hidden="true" />
               </div>
               <span className="text-xl font-bold text-white tracking-tight">CareConnect</span>
@@ -19,7 +19,7 @@ export const Footer = () => {
             <p className="text-slate-400 text-sm leading-relaxed mb-3">
               An accessible, universal healthcare appointment booking web application built according to Nielsen's Usability Heuristics and WCAG 2.1 guidelines.
             </p>
-            <div className="text-xs text-teal-400 font-medium">
+            <div className="text-xs text-indigo-400 font-medium">
               🎓 Human-Computer Interaction (HCI) Mini Project <br />
               Manipal University Jaipur
             </div>
@@ -28,7 +28,7 @@ export const Footer = () => {
           {/* HCI & Accessibility Guarantees */}
           <div>
             <h3 className="text-white font-semibold text-base mb-3 flex items-center gap-2">
-              <Shield className="w-4 h-4 text-teal-400" aria-hidden="true" />
+              <Shield className="w-4 h-4 text-indigo-400" aria-hidden="true" />
               <span>Universal Design Standards</span>
             </h3>
             <ul className="space-y-2 text-sm text-slate-400">
@@ -54,7 +54,7 @@ export const Footer = () => {
           {/* Keyboard Shortcuts Guide */}
           <div>
             <h3 className="text-white font-semibold text-base mb-3 flex items-center gap-2">
-              <Keyboard className="w-4 h-4 text-teal-400" aria-hidden="true" />
+              <Keyboard className="w-4 h-4 text-indigo-400" aria-hidden="true" />
               <span>Accessibility Navigation Tips</span>
             </h3>
             <div className="space-y-1.5 text-xs text-slate-400">
@@ -66,7 +66,7 @@ export const Footer = () => {
             <div className="mt-4">
               <Link 
                 to="/accessibility-settings" 
-                className="text-xs text-teal-400 underline hover:text-teal-300 font-semibold"
+                className="text-xs text-indigo-400 underline hover:text-indigo-300 font-semibold"
               >
                 Open Full Accessibility Guide & Controls →
               </Link>

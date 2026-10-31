@@ -103,7 +103,7 @@ export const PatientDashboardPage = () => {
   if (authLoading) {
     return (
       <main id="main-content" className="max-w-4xl mx-auto px-4 py-20 text-center">
-        <div className="inline-block w-10 h-10 border-4 border-teal-600 border-t-transparent rounded-full animate-spin mb-4" />
+        <div className="inline-block w-10 h-10 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin mb-4" />
         <p className="font-bold text-slate-700">Loading your profile...</p>
       </main>
     );
@@ -114,7 +114,7 @@ export const PatientDashboardPage = () => {
     return (
       <main id="main-content" className="max-w-2xl mx-auto px-4 py-16 text-center focus:outline-none">
         <div className="bg-white p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-sm">
-          <div className="w-16 h-16 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center mx-auto mb-4">
+          <div className="w-16 h-16 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mx-auto mb-4">
             <Calendar className="w-8 h-8" />
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-slate-900 mb-2">
@@ -146,7 +146,7 @@ export const PatientDashboardPage = () => {
       {/* Top Banner */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div>
-          <span className="text-xs uppercase tracking-wider font-bold text-teal-700 bg-teal-100 px-2.5 py-1 rounded-md">
+          <span className="text-xs uppercase tracking-wider font-bold text-indigo-700 bg-indigo-100 px-2.5 py-1 rounded-md">
             Patient Portal
           </span>
           <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight mt-1">
@@ -198,7 +198,7 @@ export const PatientDashboardPage = () => {
 
       {loading ? (
         <div className="py-20 text-center">
-          <div className="inline-block w-10 h-10 border-4 border-teal-600 border-t-transparent rounded-full animate-spin mb-4" />
+          <div className="inline-block w-10 h-10 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin mb-4" />
           <p className="font-bold text-slate-700">Loading your appointments...</p>
         </div>
       ) : (
@@ -207,7 +207,7 @@ export const PatientDashboardPage = () => {
           {/* SECTION 1: UPCOMING APPOINTMENTS */}
           <section aria-labelledby="upcoming-heading">
             <div className="flex items-center gap-2 mb-4">
-              <Calendar className="w-6 h-6 text-teal-600" aria-hidden="true" />
+              <Calendar className="w-6 h-6 text-indigo-600" aria-hidden="true" />
               <h2 id="upcoming-heading" className="text-2xl font-bold text-slate-900">
                 Upcoming Consultations ({appointments.upcoming.length})
               </h2>
@@ -229,7 +229,7 @@ export const PatientDashboardPage = () => {
                 {appointments.upcoming.map((appt) => (
                   <article
                     key={appt.appointment_id}
-                    className="bg-white rounded-3xl border-2 border-teal-600/30 shadow-sm p-6 flex flex-col justify-between hover:shadow-md transition-shadow"
+                    className="bg-white rounded-3xl border-2 border-indigo-600/30 shadow-sm p-6 flex flex-col justify-between hover:shadow-md transition-shadow"
                   >
                     <div>
                       {/* Status & Date */}
@@ -252,7 +252,7 @@ export const PatientDashboardPage = () => {
                           className="w-16 h-16 rounded-2xl object-cover bg-slate-100 border border-slate-200 flex-shrink-0"
                         />
                         <div>
-                          <span className="text-xs font-bold uppercase text-teal-700 bg-teal-50 px-2 py-0.5 rounded">
+                          <span className="text-xs font-bold uppercase text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">
                             {appt.specialization_name}
                           </span>
                           <h3 className="text-xl font-bold text-slate-900 mt-1">
@@ -265,13 +265,13 @@ export const PatientDashboardPage = () => {
                       {/* Details Box */}
                       <div className="bg-slate-50 p-4 rounded-2xl space-y-2 text-sm text-slate-700 mb-4 border border-slate-200">
                         <div className="flex items-center gap-2 font-bold text-slate-900">
-                          <Clock className="w-4 h-4 text-teal-600 flex-shrink-0" />
+                          <Clock className="w-4 h-4 text-indigo-600 flex-shrink-0" />
                           <span>
                             {new Date(appt.slot_date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })} at {appt.formatted_start} – {appt.formatted_end}
                           </span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <MapPin className="w-4 h-4 text-teal-600 flex-shrink-0" />
+                          <MapPin className="w-4 h-4 text-indigo-600 flex-shrink-0" />
                           <span className="truncate">{appt.hospital_clinic_name}</span>
                         </div>
                         {appt.patient_notes && (
@@ -375,7 +375,7 @@ export const PatientDashboardPage = () => {
                 value={cancelReason}
                 onChange={(e) => setCancelReason(e.target.value)}
                 placeholder="e.g. Schedule conflict, feeling better, rescheduled..."
-                className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:border-teal-600 focus:outline-none"
+                className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:border-indigo-600 focus:outline-none"
               />
             </div>
 

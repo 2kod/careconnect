@@ -61,13 +61,13 @@ export const HomePage = () => {
     <main id="main-content" className="focus:outline-none">
       
       {/* 1. Hero Section */}
-      <section className="bg-gradient-to-b from-teal-50/70 to-white py-12 md:py-20 border-b border-slate-200">
+      <section className="bg-gradient-to-b from-indigo-50/70 to-white py-12 md:py-20 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             
             {/* Pill Header */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-100/90 text-teal-800 text-sm font-bold border border-teal-200 mb-6">
-              <HeartPulse className="w-4 h-4 text-teal-700" aria-hidden="true" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-100/90 text-indigo-800 text-sm font-bold border border-indigo-200 mb-6">
+              <HeartPulse className="w-4 h-4 text-indigo-700" aria-hidden="true" />
               <span>HCI Universal Healthcare Initiative</span>
             </div>
 
@@ -111,7 +111,7 @@ export const HomePage = () => {
                 <span>No hidden steps or spam</span>
               </div>
               <div className="flex items-center gap-2.5 font-medium">
-                <Clock className="w-5 h-5 text-teal-600 flex-shrink-0" />
+                <Clock className="w-5 h-5 text-indigo-600 flex-shrink-0" />
                 <span>Instant confirmed slots</span>
               </div>
               <div className="flex items-center gap-2.5 font-medium">
@@ -135,7 +135,7 @@ export const HomePage = () => {
               Choose the specialty that matches your care needs, or search by doctor name.
             </p>
           </div>
-          <Link to="/doctors" className="text-teal-700 font-bold hover:underline flex items-center gap-1.5 text-base">
+          <Link to="/doctors" className="text-indigo-700 font-bold hover:underline flex items-center gap-1.5 text-base">
             <span>View All Doctors</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
@@ -149,18 +149,18 @@ export const HomePage = () => {
               <Link
                 key={spec.id}
                 to={`/doctors?spec=${spec.id}`}
-                className="group p-6 rounded-2xl bg-white border border-slate-200 hover:border-teal-500 hover:shadow-md transition-all focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-500"
+                className="group p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md transition-all focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-500"
               >
-                <div className="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center mb-4 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                   <IconComponent className="w-6 h-6" aria-hidden="true" />
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
+                <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-700 transition-colors">
                   {spec.name}
                 </h3>
                 <p className="text-sm text-slate-600 mt-2 line-clamp-2 leading-relaxed">
                   {spec.description}
                 </p>
-                <div className="mt-4 flex items-center text-xs font-bold text-teal-700 gap-1">
+                <div className="mt-4 flex items-center text-xs font-bold text-indigo-700 gap-1">
                   <span>Browse Specialists</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </div>
@@ -186,7 +186,7 @@ export const HomePage = () => {
             
             {/* Step 1 */}
             <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative">
-              <div className="w-12 h-12 rounded-2xl bg-teal-600 text-white font-black text-xl flex items-center justify-center mb-6">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white font-black text-xl flex items-center justify-center mb-6">
                 1
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2">Find Your Doctor</h3>
@@ -197,7 +197,7 @@ export const HomePage = () => {
 
             {/* Step 2 */}
             <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative">
-              <div className="w-12 h-12 rounded-2xl bg-teal-600 text-white font-black text-xl flex items-center justify-center mb-6">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white font-black text-xl flex items-center justify-center mb-6">
                 2
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2">Pick a Comfortable Time</h3>
@@ -208,7 +208,7 @@ export const HomePage = () => {
 
             {/* Step 3 */}
             <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative">
-              <div className="w-12 h-12 rounded-2xl bg-teal-600 text-white font-black text-xl flex items-center justify-center mb-6">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white font-black text-xl flex items-center justify-center mb-6">
                 3
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2">Confirmed with Peace of Mind</h3>

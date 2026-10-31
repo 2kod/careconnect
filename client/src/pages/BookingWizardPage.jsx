@@ -180,7 +180,7 @@ export const BookingWizardPage = () => {
   if (loadingDoctor) {
     return (
       <main id="main-content" className="max-w-4xl mx-auto px-4 py-20 text-center">
-        <div className="inline-block w-12 h-12 border-4 border-teal-600 border-t-transparent rounded-full animate-spin mb-4" />
+        <div className="inline-block w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin mb-4" />
         <p className="text-lg font-bold text-slate-700">Loading appointment booking system...</p>
       </main>
     );
@@ -193,7 +193,7 @@ export const BookingWizardPage = () => {
       <div className="mb-6 flex items-center justify-between">
         <Link 
           to="/doctors" 
-          className="inline-flex items-center gap-1.5 text-slate-600 hover:text-teal-700 font-bold text-sm"
+          className="inline-flex items-center gap-1.5 text-slate-600 hover:text-indigo-700 font-bold text-sm"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Change Doctor</span>
@@ -262,21 +262,21 @@ export const BookingWizardPage = () => {
                   onClick={() => setSelectedDate(item.iso)}
                   className={`
                     p-4 rounded-2xl border-2 text-center transition-all flex flex-col items-center justify-center min-h-[96px]
-                    focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-500
+                    focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-500
                     ${isSelected 
-                      ? 'bg-teal-700 text-white border-teal-700 shadow-md ring-2 ring-teal-500/20' 
-                      : 'bg-slate-50 text-slate-800 border-slate-200 hover:border-teal-400 hover:bg-teal-50/50'
+                      ? 'bg-indigo-700 text-white border-indigo-700 shadow-md ring-2 ring-indigo-500/20' 
+                      : 'bg-slate-50 text-slate-800 border-slate-200 hover:border-indigo-400 hover:bg-indigo-50/50'
                     }
                   `}
                 >
-                  <span className={`text-xs font-bold uppercase tracking-wider ${isSelected ? 'text-teal-100' : 'text-slate-500'}`}>
+                  <span className={`text-xs font-bold uppercase tracking-wider ${isSelected ? 'text-indigo-100' : 'text-slate-500'}`}>
                     {item.dayName}
                   </span>
                   <span className="text-lg font-black mt-1">
                     {item.formatted}
                   </span>
                   {item.isToday && (
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full mt-1 ${isSelected ? 'bg-teal-800 text-teal-200' : 'bg-teal-100 text-teal-800'}`}>
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full mt-1 ${isSelected ? 'bg-indigo-800 text-indigo-200' : 'bg-indigo-100 text-indigo-800'}`}>
                       Today
                     </span>
                   )}
@@ -320,7 +320,7 @@ export const BookingWizardPage = () => {
             <button
               type="button"
               onClick={() => setCurrentStep(1)}
-              className="text-teal-700 font-bold hover:underline text-sm self-start sm:self-auto"
+              className="text-indigo-700 font-bold hover:underline text-sm self-start sm:self-auto"
             >
               Change Date
             </button>
@@ -328,7 +328,7 @@ export const BookingWizardPage = () => {
 
           {loadingSlots ? (
             <div className="py-16 text-center">
-              <div className="inline-block w-10 h-10 border-4 border-teal-600 border-t-transparent rounded-full animate-spin mb-3" />
+              <div className="inline-block w-10 h-10 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin mb-3" />
               <p className="text-slate-600 font-bold">Checking doctor schedule...</p>
             </div>
           ) : (
@@ -357,12 +357,12 @@ export const BookingWizardPage = () => {
                           onClick={() => setSelectedSlot(slot)}
                           className={`
                             p-4 rounded-2xl border-2 text-left transition-all flex items-center justify-between min-h-[58px]
-                            focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-500
+                            focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-500
                             ${!slot.isAvailable 
                               ? 'bg-slate-100 border-slate-200 text-slate-400 cursor-not-allowed opacity-60' 
                               : isSelected
-                                ? 'bg-teal-700 text-white border-teal-700 shadow-md ring-2 ring-teal-500/20'
-                                : 'bg-slate-50 text-slate-800 border-slate-200 hover:border-teal-400 hover:bg-teal-50/50'
+                                ? 'bg-indigo-700 text-white border-indigo-700 shadow-md ring-2 ring-indigo-500/20'
+                                : 'bg-slate-50 text-slate-800 border-slate-200 hover:border-indigo-400 hover:bg-indigo-50/50'
                             }
                           `}
                         >
@@ -371,7 +371,7 @@ export const BookingWizardPage = () => {
                             !slot.isAvailable 
                               ? 'bg-slate-200 text-slate-500' 
                               : isSelected 
-                                ? 'bg-teal-800 text-teal-100' 
+                                ? 'bg-indigo-800 text-indigo-100' 
                                 : 'bg-emerald-100 text-emerald-800'
                           }`}>
                             {slot.isAvailable ? 'Available' : 'Booked'}
@@ -406,12 +406,12 @@ export const BookingWizardPage = () => {
                           onClick={() => setSelectedSlot(slot)}
                           className={`
                             p-4 rounded-2xl border-2 text-left transition-all flex items-center justify-between min-h-[58px]
-                            focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-500
+                            focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-500
                             ${!slot.isAvailable 
                               ? 'bg-slate-100 border-slate-200 text-slate-400 cursor-not-allowed opacity-60' 
                               : isSelected
-                                ? 'bg-teal-700 text-white border-teal-700 shadow-md ring-2 ring-teal-500/20'
-                                : 'bg-slate-50 text-slate-800 border-slate-200 hover:border-teal-400 hover:bg-teal-50/50'
+                                ? 'bg-indigo-700 text-white border-indigo-700 shadow-md ring-2 ring-indigo-500/20'
+                                : 'bg-slate-50 text-slate-800 border-slate-200 hover:border-indigo-400 hover:bg-indigo-50/50'
                             }
                           `}
                         >
@@ -420,7 +420,7 @@ export const BookingWizardPage = () => {
                             !slot.isAvailable 
                               ? 'bg-slate-200 text-slate-500' 
                               : isSelected 
-                                ? 'bg-teal-800 text-teal-100' 
+                                ? 'bg-indigo-800 text-indigo-100' 
                                 : 'bg-emerald-100 text-emerald-800'
                           }`}>
                             {slot.isAvailable ? 'Available' : 'Booked'}
@@ -481,13 +481,13 @@ export const BookingWizardPage = () => {
                 className="w-16 h-16 rounded-2xl object-cover bg-white border border-slate-200 flex-shrink-0"
               />
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-100 px-2 py-0.5 rounded">
+                <span className="text-xs font-bold uppercase tracking-wider text-indigo-700 bg-indigo-100 px-2 py-0.5 rounded">
                   {doctor?.specialization_name}
                 </span>
                 <h2 className="text-xl font-bold text-slate-900 mt-1">{doctor?.full_name}</h2>
                 <p className="text-sm text-slate-600">{doctor?.qualification}</p>
                 <p className="text-xs text-slate-500 mt-1 flex items-center gap-1">
-                  <MapPin className="w-3.5 h-3.5 text-teal-600" />
+                  <MapPin className="w-3.5 h-3.5 text-indigo-600" />
                   {doctor?.hospital_clinic_name}
                 </p>
               </div>
@@ -498,7 +498,7 @@ export const BookingWizardPage = () => {
               <div className="bg-white p-4 rounded-xl border border-slate-200">
                 <span className="text-xs text-slate-500 block">Date of Consultation</span>
                 <span className="text-base font-bold text-slate-900 flex items-center gap-2 mt-1">
-                  <CalendarIcon className="w-4 h-4 text-teal-600" />
+                  <CalendarIcon className="w-4 h-4 text-indigo-600" />
                   {new Date(selectedDate).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
                 </span>
               </div>
@@ -506,7 +506,7 @@ export const BookingWizardPage = () => {
               <div className="bg-white p-4 rounded-xl border border-slate-200">
                 <span className="text-xs text-slate-500 block">Time Slot</span>
                 <span className="text-base font-bold text-slate-900 flex items-center gap-2 mt-1">
-                  <Clock className="w-4 h-4 text-teal-600" />
+                  <Clock className="w-4 h-4 text-indigo-600" />
                   {selectedSlot?.formattedStart} – {selectedSlot?.formattedEnd}
                 </span>
               </div>
@@ -536,7 +536,7 @@ export const BookingWizardPage = () => {
               value={patientNotes}
               onChange={(e) => setPatientNotes(e.target.value)}
               placeholder="e.g. Follow-up for knee discomfort, routine checkup, blood pressure prescription renewal..."
-              className="w-full p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl text-slate-900 text-base focus:bg-white focus:border-teal-600 focus:outline-none transition-colors"
+              className="w-full p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl text-slate-900 text-base focus:bg-white focus:border-indigo-600 focus:outline-none transition-colors"
             />
             <p className="text-xs text-slate-500 mt-1">
               This helps the doctor prepare for your consultation.
@@ -603,7 +603,7 @@ export const BookingWizardPage = () => {
             <div className="flex justify-between items-start border-b border-slate-200 pb-4">
               <div>
                 <span className="text-xs text-slate-500 uppercase tracking-wider font-bold">Booking Reference</span>
-                <p className="text-base font-mono font-bold text-teal-800">{confirmedBooking.appointment_id}</p>
+                <p className="text-base font-mono font-bold text-indigo-800">{confirmedBooking.appointment_id}</p>
               </div>
               <span className="px-2.5 py-1 bg-emerald-600 text-white text-xs font-bold rounded-lg uppercase">
                 {confirmedBooking.appointment_status}

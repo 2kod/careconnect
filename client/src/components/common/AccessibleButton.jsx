@@ -21,9 +21,9 @@ export const AccessibleButton = ({
   };
 
   const variantClasses = {
-    primary: 'bg-teal-600 text-white hover:bg-teal-700 active:bg-teal-800 shadow-sm border border-transparent',
+    primary: 'bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-800 shadow-sm border border-transparent',
     secondary: 'bg-slate-100 text-slate-800 hover:bg-slate-200 active:bg-slate-300 border border-slate-300',
-    outline: 'bg-transparent text-teal-700 hover:bg-teal-50 border-2 border-teal-600 active:bg-teal-100',
+    outline: 'bg-transparent text-indigo-700 hover:bg-indigo-50 border-2 border-indigo-600 active:bg-indigo-100',
     danger: 'bg-rose-600 text-white hover:bg-rose-700 active:bg-rose-800 border border-transparent shadow-sm',
     ghost: 'bg-transparent text-slate-750 hover:bg-slate-100 border border-transparent',
   };
@@ -37,7 +37,7 @@ export const AccessibleButton = ({
       aria-busy={loading}
       className={`
         inline-flex items-center justify-center gap-2.5 rounded-xl
-        focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-500/50
+        focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-500/50
         disabled:opacity-50 disabled:cursor-not-allowed select-none
         ${sizeClasses[size]}
         ${variantClasses[variant]}

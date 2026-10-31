@@ -63,7 +63,7 @@ async function runSeed() {
         hospital: 'CareConnect Senior Wellness Centre, Jaipur',
         fee: 500.00,
         bio: 'Dedicated to compassionate, patient-centered care for seniors. Specializes in multi-morbidity management, gentle consultation pace, and clear medication guidance.',
-        image: 'https://images.unsplash.com/photo-1594824813637-2804b40700d3?auto=format&fit=crop&w=500&q=80'
+        image: 'https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=500&q=80'
       },
       {
         spec: 'Cardiology',

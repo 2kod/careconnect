@@ -75,7 +75,7 @@ export const AccessibleModal = ({
           <button
             onClick={onClose}
             aria-label="Close dialog"
-            className="p-2 -mr-2 -mt-2 text-slate-400 hover:text-slate-700 rounded-xl hover:bg-slate-100 focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-500"
+            className="p-2 -mr-2 -mt-2 text-slate-400 hover:text-slate-700 rounded-xl hover:bg-slate-100 focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-500"
           >
             <X className="w-6 h-6" aria-hidden="true" />
           </button>

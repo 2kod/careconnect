@@ -1,5 +1,5 @@
 import React from 'react';
-import { Volume2, VolumeX, Eye, Settings, HelpCircle } from 'lucide-react';
+import { Volume2, VolumeX, Eye, Settings } from 'lucide-react';
 import { useAccessibility } from '../../context/AccessibilityContext';
 import { Link } from 'react-router-dom';
 
@@ -9,10 +9,6 @@ export const AccessibilityBar = () => {
     setFontSize,
     highContrast,
     toggleHighContrast,
-    voiceGuidance,
-    toggleVoiceGuidance,
-    colorTheme,
-    setColorTheme,
     isSpeaking,
     stopSpeaking,
     speak,
@@ -24,7 +20,6 @@ export const AccessibilityBar = () => {
       return;
     }
 
-    // Extract visible page headings and main text for clean speech summary
     const headings = Array.from(document.querySelectorAll('main h1, main h2, main p'))
       .slice(0, 5)
       .map(el => el.innerText)
@@ -38,12 +33,12 @@ export const AccessibilityBar = () => {
   return (
     <aside 
       aria-label="Accessibility controls bar"
-      className="bg-slate-900 text-white px-4 py-2 text-sm border-b border-slate-800 transition-colors"
+      className="bg-slate-900 text-white px-4 py-2.5 text-sm border-b border-slate-800 transition-colors"
     >
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
         {/* Left: Quick Label */}
         <div className="flex items-center gap-2">
-          <span className="font-semibold flex items-center gap-1.5 text-teal-300">
+          <span className="font-semibold flex items-center gap-1.5 text-indigo-300">
             <Eye className="w-4 h-4" aria-hidden="true" />
             <span>Accessibility Bar:</span>
           </span>
@@ -51,7 +46,7 @@ export const AccessibilityBar = () => {
         </div>
 
         {/* Center / Right: Accessibility Quick Actions */}
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2.5">
           {/* Font Size Selector */}
           <div className="flex items-center bg-slate-800 rounded-lg p-0.5 border border-slate-700" role="group" aria-label="Text size options">
             <span className="text-xs text-slate-400 px-2 select-none" id="text-size-label">Text:</span>
@@ -61,7 +56,7 @@ export const AccessibilityBar = () => {
               aria-pressed={fontSize === 'normal'}
               className={`px-2.5 py-1 text-xs font-semibold rounded ${
                 fontSize === 'normal' 
-                  ? 'bg-teal-500 text-slate-950 font-bold' 
+                  ? 'bg-indigo-600 text-white font-bold shadow' 
                   : 'text-slate-200 hover:bg-slate-700'
               }`}
             >
@@ -73,7 +68,7 @@ export const AccessibilityBar = () => {
               aria-pressed={fontSize === 'large'}
               className={`px-2.5 py-1 text-sm font-semibold rounded ${
                 fontSize === 'large' 
-                  ? 'bg-teal-500 text-slate-950 font-bold' 
+                  ? 'bg-indigo-600 text-white font-bold shadow' 
                   : 'text-slate-200 hover:bg-slate-700'
               }`}
             >
@@ -85,58 +80,11 @@ export const AccessibilityBar = () => {
               aria-pressed={fontSize === 'x-large'}
               className={`px-2.5 py-1 text-base font-semibold rounded ${
                 fontSize === 'x-large' 
-                  ? 'bg-teal-500 text-slate-950 font-bold' 
+                  ? 'bg-indigo-600 text-white font-bold shadow' 
                   : 'text-slate-200 hover:bg-slate-700'
               }`}
             >
               A++
-            </button>
-          </div>
-
-          {/* Color Palette Switcher */}
-          <div className="hidden sm:flex items-center bg-slate-800 rounded-lg p-0.5 border border-slate-700" role="group" aria-label="Color scheme theme">
-            <span className="text-xs text-slate-400 px-2 select-none">Theme:</span>
-            <button
-              type="button"
-              onClick={() => setColorTheme('indigo')}
-              aria-pressed={colorTheme === 'indigo'}
-              title="Warm Indigo & Lavender (Active Theme)"
-              className={`px-2 py-1 text-xs font-semibold rounded flex items-center gap-1 ${
-                colorTheme === 'indigo'
-                  ? 'bg-indigo-600 text-white font-bold shadow-sm'
-                  : 'text-slate-300 hover:bg-slate-700'
-              }`}
-            >
-              <span className="w-2 h-2 rounded-full bg-indigo-300" />
-              <span>Lavender & Indigo</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setColorTheme('blue')}
-              aria-pressed={colorTheme === 'blue'}
-              title="Clinical Ocean Blue"
-              className={`px-2 py-1 text-xs font-semibold rounded flex items-center gap-1 ${
-                colorTheme === 'blue'
-                  ? 'bg-blue-600 text-white font-bold shadow-sm'
-                  : 'text-slate-300 hover:bg-slate-700'
-              }`}
-            >
-              <span className="w-2 h-2 rounded-full bg-blue-300" />
-              <span>Blue</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setColorTheme('emerald')}
-              aria-pressed={colorTheme === 'emerald'}
-              title="Sage & Emerald Health"
-              className={`px-2 py-1 text-xs font-semibold rounded flex items-center gap-1 ${
-                colorTheme === 'emerald'
-                  ? 'bg-emerald-600 text-white font-bold shadow-sm'
-                  : 'text-slate-300 hover:bg-slate-700'
-              }`}
-            >
-              <span className="w-2 h-2 rounded-full bg-emerald-300" />
-              <span>Emerald</span>
             </button>
           </div>
 
@@ -173,7 +121,7 @@ export const AccessibilityBar = () => {
               </>
             ) : (
               <>
-                <Volume2 className="w-3.5 h-3.5 text-teal-400" aria-hidden="true" />
+                <Volume2 className="w-3.5 h-3.5 text-indigo-400" aria-hidden="true" />
                 <span>Read Page</span>
               </>
             )}
@@ -195,4 +143,3 @@ export const AccessibilityBar = () => {
 };
 
 export default AccessibilityBar;
-
