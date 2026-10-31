@@ -12,6 +12,8 @@ services:
     buildCommand: cd client && npm install && npm run build && cd ../server && npm install
     startCommand: cd server && npm start
     envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
       - key: NODE_ENV
         value: production
       - key: PORT

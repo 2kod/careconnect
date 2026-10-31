@@ -22,6 +22,9 @@
     "pern-stack"
   ],
   "author": "CareConnect Team - Manipal University Jaipur",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  }
 }
 
