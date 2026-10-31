@@ -60,22 +60,16 @@ export const LoginPage = () => {
           </p>
         </div>
 
-        {/* Demo Fill Pill for Evaluators & Teachers */}
-        <div className="mb-6 bg-indigo-50 border border-indigo-200 rounded-2xl p-4 text-center">
-          <span className="text-xs font-bold uppercase tracking-wider text-indigo-800 block mb-1">
-            🎓 Academic Evaluation / Viva Quick Access
-          </span>
-          <p className="text-xs text-slate-600 mb-2">
-            Click below to autofill the sample patient profile (Ramesh Sharma).
-          </p>
+        {/* Quick Demo Fill */}
+        <div className="mb-6 bg-slate-50 border border-slate-200 rounded-2xl p-3.5 text-center">
           <AccessibleButton
             variant="secondary"
             size="sm"
             onClick={handleFillDemo}
-            className="w-full text-xs font-bold text-indigo-800 border-indigo-300"
+            className="w-full text-xs font-bold text-slate-700 border-slate-300"
             icon={Sparkles}
           >
-            Auto-Fill Demo Patient Credentials
+            Auto-Fill Sample Patient Details
           </AccessibleButton>
         </div>
 
