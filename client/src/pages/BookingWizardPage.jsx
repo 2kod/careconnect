@@ -470,7 +470,7 @@ export const BookingWizardPage = () => {
             </p>
           </div>
 
-          {/* Summary Card (HCI Principle: Recognition rather than Recall) */}
+          {/* Summary Card (Recognition rather than Recall) */}
           <div className="bg-slate-50 rounded-2xl p-6 border-2 border-slate-200 space-y-6 mb-8">
             
             {/* Doctor info */}

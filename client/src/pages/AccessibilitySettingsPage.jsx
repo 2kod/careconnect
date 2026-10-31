@@ -253,13 +253,13 @@ export const AccessibilitySettingsPage = () => {
           </AccessibleButton>
         </div>
 
-        {/* 4. Academic Evaluation Matrix / HCI Theory Guide */}
+        {/* 4. Usability Evaluation & Accessibility Guidelines */}
         <section aria-labelledby="academic-heading" className="bg-slate-900 text-white p-8 rounded-3xl mt-12 border border-slate-800">
           <span className="text-xs uppercase tracking-wider font-bold text-indigo-300 bg-slate-800 px-3 py-1 rounded-md">
-            Academic Project Documentation
+            Design Standards
           </span>
           <h2 id="academic-heading" className="text-2xl font-black mt-2 mb-4">
-            How CareConnect Implements HCI Principles & Nielsen Heuristics
+            Universal Usability Principles & Accessibility Guidelines
           </h2>
           <div className="space-y-4 text-sm text-slate-300 leading-relaxed">
             <div className="p-4 bg-slate-800/80 rounded-2xl border border-slate-700">

@@ -20,12 +20,11 @@ export const Footer = () => {
               An accessible, universal healthcare appointment booking web application built according to Nielsen's Usability Heuristics and WCAG 2.1 guidelines.
             </p>
             <div className="text-xs text-indigo-400 font-medium">
-              🎓 Human-Computer Interaction (HCI) Mini Project <br />
               Manipal University Jaipur
             </div>
           </div>
 
-          {/* HCI & Accessibility Guarantees */}
+          {/* Universal Accessibility Guarantees */}
           <div>
             <h3 className="text-white font-semibold text-base mb-3 flex items-center gap-2">
               <Shield className="w-4 h-4 text-indigo-400" aria-hidden="true" />

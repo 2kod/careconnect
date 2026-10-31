@@ -44,7 +44,7 @@ export const Navbar = () => {
               <span className="text-2xl font-black tracking-tight text-slate-900 flex items-center gap-1.5">
                 CareConnect
                 <span className="text-xs px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800 font-bold border border-indigo-200 uppercase tracking-wide">
-                  HCI Accessible
+                  Accessible Healthcare
                 </span>
               </span>
               <p className="text-xs text-slate-500 hidden sm:block">Healthcare booking designed for everyone</p>

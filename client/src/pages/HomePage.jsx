@@ -68,7 +68,7 @@ export const HomePage = () => {
             {/* Pill Header */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-100/90 text-indigo-800 text-sm font-bold border border-indigo-200 mb-6">
               <HeartPulse className="w-4 h-4 text-indigo-700" aria-hidden="true" />
-              <span>HCI Universal Healthcare Initiative</span>
+              <span>Universal Healthcare Initiative</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-6">
@@ -170,7 +170,7 @@ export const HomePage = () => {
         </div>
       </section>
 
-      {/* 3. 3-Step Simple Booking Process (HCI Principle: Minimal Cognitive Load) */}
+      {/* 3. 3-Step Simple Booking Process (Minimal Cognitive Load) */}
       <section className="bg-slate-100 py-16 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">

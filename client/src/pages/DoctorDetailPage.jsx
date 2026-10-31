@@ -163,7 +163,7 @@ export const DoctorDetailPage = () => {
             </Link>
           </div>
 
-          {/* HCI Reassurances */}
+          {/* Reassurances */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-600 pt-4 border-t border-slate-100">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-emerald-600 flex-shrink-0" />
