@@ -9,6 +9,7 @@ import {
   Clock, 
   Award, 
   Volume2, 
+  VolumeX,
   HeartHandshake 
 } from 'lucide-react';
 import { api } from '../services/api';
@@ -21,7 +22,7 @@ export const DoctorDetailPage = () => {
   const [doctor, setDoctor] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const { speak } = useAccessibility();
+  const { speak, stopSpeaking, isSpeaking } = useAccessibility();
 
   useEffect(() => {
     const fetchDoctor = async () => {
@@ -38,13 +39,6 @@ export const DoctorDetailPage = () => {
     };
     fetchDoctor();
   }, [id]);
-
-  const handleReadProfile = () => {
-    if (!doctor) return;
-    speak(
-      `Doctor profile: ${doctor.full_name}, ${doctor.qualification}, specializing in ${doctor.specialization_name} with ${doctor.experience_years} years of experience at ${doctor.hospital_clinic_name}. Consultation fee is ${parseInt(doctor.consultation_fee, 10)} rupees. Doctor summary: ${doctor.bio}`
-    );
-  };
 
   if (loading) {
     return (
@@ -117,18 +111,6 @@ export const DoctorDetailPage = () => {
                 {doctor.hospital_clinic_name}
               </span>
             </div>
-          </div>
-
-          <div className="md:self-start">
-            <AccessibleButton
-              variant="outline"
-              size="sm"
-              icon={Volume2}
-              onClick={handleReadProfile}
-              ariaLabel="Read doctor credentials aloud"
-            >
-              Read Profile
-            </AccessibleButton>
           </div>
         </div>
 

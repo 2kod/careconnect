@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { 
   Eye, 
   Volume2, 
+  VolumeX,
   Sparkles, 
   Sliders, 
   CheckCircle2, 
@@ -25,6 +26,8 @@ export const AccessibilitySettingsPage = () => {
     colorTheme,
     setColorTheme,
     speak,
+    stopSpeaking,
+    isSpeaking,
     announce
   } = useAccessibility();
 
@@ -33,6 +36,10 @@ export const AccessibilitySettingsPage = () => {
   const [saving, setSaving] = useState(false);
 
   const handleTestSpeech = () => {
+    if (isSpeaking) {
+      stopSpeaking();
+      return;
+    }
     speak('This is a demonstration of CareConnect voice guidance. You can listen to doctor summaries, slot details, and booking confirmations.');
   };
 
@@ -233,10 +240,10 @@ export const AccessibilitySettingsPage = () => {
             <AccessibleButton
               variant="outline"
               size="sm"
-              icon={Volume2}
+              icon={isSpeaking ? VolumeX : Volume2}
               onClick={handleTestSpeech}
             >
-              Test Voice Readout
+              {isSpeaking ? 'Stop Voice Readout' : 'Test Voice Readout'}
             </AccessibleButton>
           </div>
         </section>

@@ -9,7 +9,8 @@ import {
   CheckCircle2, 
   ArrowRight, 
   Sparkles,
-  Volume2
+  Volume2,
+  VolumeX
 } from 'lucide-react';
 import { api } from '../services/api';
 import AccessibleButton from '../components/common/AccessibleButton';
@@ -25,7 +26,7 @@ export const DoctorListPage = () => {
   const [selectedSpec, setSelectedSpec] = useState(initialSpec);
   const [searchTerm, setSearchTerm] = useState(initialSearch);
   const [loading, setLoading] = useState(true);
-  const { speak, announce } = useAccessibility();
+  const { speak, stopSpeaking, isSpeaking, announce } = useAccessibility();
 
   // Load Specializations once
   useEffect(() => {
@@ -85,41 +86,17 @@ export const DoctorListPage = () => {
     announce('Search and filters cleared.');
   };
 
-  const handleReadDoctorList = () => {
-    if (doctors.length === 0) {
-      speak('No doctors found matching your current filter. Please clear filters to see all doctors.');
-      return;
-    }
-    const doctorNames = doctors
-      .slice(0, 4)
-      .map(d => `${d.full_name}, specialist in ${d.specialization_name} with ${d.experience_years} years of experience`)
-      .join('. ');
-    speak(`Showing ${doctors.length} doctors. Here are the first few: ${doctorNames}.`);
-  };
-
   return (
     <main id="main-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 focus:outline-none">
       
-      {/* Title & Top Audio Assist */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-        <div>
-          <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
-            Meet Our Caring Doctors
-          </h1>
-          <p className="text-slate-600 text-lg mt-1">
-            Choose a doctor who takes the time to listen to your health concerns. Transparent clinic timings and honest fees upfront.
-          </p>
-        </div>
-
-        <AccessibleButton
-          variant="outline"
-          size="md"
-          icon={Volume2}
-          onClick={handleReadDoctorList}
-          ariaLabel="Read list of available doctors aloud"
-        >
-          Listen to Doctor Names
-        </AccessibleButton>
+      {/* Title & Description */}
+      <div className="mb-8">
+        <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
+          Meet Our Caring Doctors
+        </h1>
+        <p className="text-slate-600 text-lg mt-1">
+          Choose a doctor who takes the time to listen to your health concerns. Transparent clinic timings and honest fees upfront.
+        </p>
       </div>
 
       {/* Search & Filter Toolbar */}

@@ -9,9 +9,11 @@ import {
   XCircle, 
   Plus, 
   Volume2, 
+  VolumeX,
   ShieldAlert, 
   History, 
-  Receipt 
+  Receipt,
+  Users
 } from 'lucide-react';
 import { api } from '../services/api';
 import { useAuth } from '../context/AuthContext';
@@ -22,7 +24,7 @@ import AccessibleModal from '../components/common/AccessibleModal';
 export const PatientDashboardPage = () => {
   const { user, isAuthenticated, loading: authLoading } = useAuth();
   const navigate = useNavigate();
-  const { speak, announce } = useAccessibility();
+  const { speak, stopSpeaking, isSpeaking, announce } = useAccessibility();
 
   const [appointments, setAppointments] = useState({ upcoming: [], past: [] });
   const [loading, setLoading] = useState(true);
@@ -77,7 +79,6 @@ export const PatientDashboardPage = () => {
         setCancelModalOpen(false);
         setActionMessage('Appointment successfully cancelled. The time slot has been freed.');
         announce('Appointment successfully cancelled.');
-        speak('Your appointment has been safely cancelled.');
         fetchAppointments();
       }
     } catch (err) {
@@ -85,19 +86,6 @@ export const PatientDashboardPage = () => {
     } finally {
       setCancelLoading(false);
     }
-  };
-
-  const handleReadSchedule = () => {
-    if (appointments.upcoming.length === 0) {
-      speak('You have no upcoming appointments scheduled right now. Click find doctors to schedule one.');
-      return;
-    }
-
-    const first = appointments.upcoming[0];
-    const dateStr = new Date(first.slot_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
-    speak(
-      `You have ${appointments.upcoming.length} upcoming appointments. Your next one is with ${first.doctor_name} on ${dateStr} at ${first.formatted_start} at ${first.hospital_clinic_name}.`
-    );
   };
 
   if (authLoading) {
@@ -157,17 +145,7 @@ export const PatientDashboardPage = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          <AccessibleButton
-            variant="outline"
-            size="md"
-            icon={Volume2}
-            onClick={handleReadSchedule}
-            ariaLabel="Read my upcoming appointment schedule aloud"
-          >
-            Read Schedule Aloud
-          </AccessibleButton>
-
+        <div>
           <Link to="/doctors">
             <AccessibleButton size="md" icon={Plus}>
               Book New Appointment
@@ -279,9 +257,25 @@ export const PatientDashboardPage = () => {
                           <span className="truncate">{appt.hospital_clinic_name}</span>
                         </div>
                         {appt.patient_notes && (
-                          <p className="text-xs text-slate-600 pt-2 border-t border-slate-200 italic">
-                            Notes: "{appt.patient_notes}"
-                          </p>
+                          <div className="pt-2 border-t border-slate-200">
+                            {appt.patient_notes.includes('[FAMILY / CAREGIVER PROXY BOOKING]') ? (
+                              <div className="bg-indigo-100/70 p-2.5 rounded-xl border border-indigo-200 text-xs text-indigo-950 flex items-start gap-2">
+                                <Users className="w-3.5 h-3.5 text-indigo-700 flex-shrink-0 mt-0.5" />
+                                <div>
+                                  <span className="font-bold block uppercase tracking-wider text-[10px] text-indigo-800">
+                                    Caregiver Proxy Booking
+                                  </span>
+                                  <p className="mt-0.5 font-medium leading-relaxed">
+                                    {appt.patient_notes.replace('[FAMILY / CAREGIVER PROXY BOOKING] ', '')}
+                                  </p>
+                                </div>
+                              </div>
+                            ) : (
+                              <p className="text-xs text-slate-600 italic">
+                                Notes: "{appt.patient_notes}"
+                              </p>
+                            )}
+                          </div>
                         )}
                       </div>
                     </div>

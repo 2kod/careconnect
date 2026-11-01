@@ -15,7 +15,9 @@ import {
   Volume2, 
   Printer, 
   Download,
-  CalendarPlus
+  CalendarPlus,
+  Users,
+  HeartHandshake
 } from 'lucide-react';
 import { api } from '../services/api';
 import { useAuth } from '../context/AuthContext';
@@ -51,6 +53,13 @@ export const BookingWizardPage = () => {
 
   // Patient notes
   const [patientNotes, setPatientNotes] = useState('');
+
+  // Caregiver / Family Companion Mode state
+  const [bookingFor, setBookingFor] = useState('myself'); // 'myself' or 'dependent'
+  const [dependentName, setDependentName] = useState('');
+  const [dependentAge, setDependentAge] = useState('');
+  const [dependentRelation, setDependentRelation] = useState('Mother');
+  const [mobilityAssistance, setMobilityAssistance] = useState('None');
 
   // Booking result state
   const [bookingLoading, setBookingLoading] = useState(false);
@@ -135,12 +144,24 @@ export const BookingWizardPage = () => {
   };
 
   const handleConfirmAppointment = async () => {
+    // Compile comprehensive notes including Caregiver Companion details
+    let compiledNotes = patientNotes.trim();
+    if (bookingFor === 'dependent' && dependentName.trim()) {
+      const companionHeader = `[FAMILY / CAREGIVER PROXY BOOKING] Patient: ${dependentName.trim()} (${dependentRelation}, Age: ${dependentAge || 'Senior'}). Clinic Mobility: ${mobilityAssistance}.`;
+      compiledNotes = compiledNotes ? `${companionHeader}\nSymptoms / Health Reason: ${compiledNotes}` : companionHeader;
+    }
+
     if (!isAuthenticated) {
       // Save pending booking details in sessionStorage and redirect to login
       sessionStorage.setItem('careconnect_pending_booking', JSON.stringify({
         doctorId,
         slotId: selectedSlot.id,
-        patientNotes
+        patientNotes: compiledNotes,
+        bookingFor,
+        dependentName,
+        dependentAge,
+        dependentRelation,
+        mobilityAssistance
       }));
       navigate('/login?redirect=' + encodeURIComponent(`/book/${doctorId}`));
       return;
@@ -153,16 +174,20 @@ export const BookingWizardPage = () => {
       const res = await api.createAppointment({
         slotId: selectedSlot.id,
         doctorId,
-        patientNotes
+        patientNotes: compiledNotes
       });
 
       if (res.success) {
-        setConfirmedBooking(res.data);
+        setConfirmedBooking({
+          ...res.data,
+          bookingFor,
+          dependentName,
+          dependentAge,
+          dependentRelation,
+          mobilityAssistance
+        });
         setCurrentStep(4);
         announce('Appointment successfully confirmed! Booking reference generated.');
-        speak(
-          `Congratulations! Your appointment with ${doctor.full_name} is confirmed for ${selectedDate} at ${selectedSlot.formattedStart}.`
-        );
       }
     } catch (err) {
       // Concurrency conflict check or error
@@ -525,6 +550,131 @@ export const BookingWizardPage = () => {
 
           </div>
 
+          {/* Caregiver Companion Mode - Who is this consultation for? */}
+          <div className="bg-indigo-50/70 rounded-2xl p-5 sm:p-6 border-2 border-indigo-200 mb-6">
+            <div className="flex items-center gap-2 mb-2">
+              <HeartHandshake className="w-5 h-5 text-indigo-700" aria-hidden="true" />
+              <h2 className="font-bold text-slate-900 text-base sm:text-lg">Who is attending this doctor visit?</h2>
+            </div>
+            <p className="text-xs sm:text-sm text-slate-600 mb-4">
+              CareConnect welcomes family members booking on behalf of parents or elderly loved ones.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+              <button
+                type="button"
+                onClick={() => setBookingFor('myself')}
+                className={`p-3.5 rounded-xl border-2 flex items-center gap-3 transition-all text-left ${
+                  bookingFor === 'myself'
+                    ? 'bg-white border-indigo-600 shadow-sm ring-2 ring-indigo-500/20'
+                    : 'bg-white/60 border-slate-200 text-slate-700 hover:bg-white'
+                }`}
+              >
+                <div className={`w-9 h-9 rounded-xl flex items-center justify-center font-bold text-sm flex-shrink-0 ${
+                  bookingFor === 'myself' ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-600'
+                }`}>
+                  <User className="w-4 h-4" />
+                </div>
+                <div>
+                  <span className="block font-bold text-sm text-slate-900">For Myself</span>
+                  <span className="text-xs text-slate-500">I will attend this visit</span>
+                </div>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setBookingFor('dependent')}
+                className={`p-3.5 rounded-xl border-2 flex items-center gap-3 transition-all text-left ${
+                  bookingFor === 'dependent'
+                    ? 'bg-white border-indigo-600 shadow-sm ring-2 ring-indigo-500/20'
+                    : 'bg-white/60 border-slate-200 text-slate-700 hover:bg-white'
+                }`}
+              >
+                <div className={`w-9 h-9 rounded-xl flex items-center justify-center font-bold text-sm flex-shrink-0 ${
+                  bookingFor === 'dependent' ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-600'
+                }`}>
+                  <Users className="w-4 h-4" />
+                </div>
+                <div>
+                  <span className="block font-bold text-sm text-slate-900">For a Parent or Loved One</span>
+                  <span className="text-xs text-slate-500">Caregiver companion mode</span>
+                </div>
+              </button>
+            </div>
+
+            {/* Dependent details when Companion Mode is selected */}
+            {bookingFor === 'dependent' && (
+              <div className="bg-white p-4 sm:p-5 rounded-xl border border-indigo-200 space-y-4 animate-fade-in shadow-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="sm:col-span-2">
+                    <label htmlFor="dep-name" className="block text-xs font-bold text-slate-700 mb-1">
+                      Patient's Full Name (e.g. Mother / Father):
+                    </label>
+                    <input
+                      id="dep-name"
+                      type="text"
+                      value={dependentName}
+                      onChange={(e) => setDependentName(e.target.value)}
+                      placeholder="e.g. Shanti Devi"
+                      className="w-full p-2.5 text-sm border-2 border-slate-200 rounded-lg focus:border-indigo-600 focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="dep-age" className="block text-xs font-bold text-slate-700 mb-1">
+                      Patient's Age:
+                    </label>
+                    <input
+                      id="dep-age"
+                      type="number"
+                      value={dependentAge}
+                      onChange={(e) => setDependentAge(e.target.value)}
+                      placeholder="e.g. 72"
+                      className="w-full p-2.5 text-sm border-2 border-slate-200 rounded-lg focus:border-indigo-600 focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label htmlFor="dep-rel" className="block text-xs font-bold text-slate-700 mb-1">
+                      Relationship to You:
+                    </label>
+                    <select
+                      id="dep-rel"
+                      value={dependentRelation}
+                      onChange={(e) => setDependentRelation(e.target.value)}
+                      className="w-full p-2.5 text-sm border-2 border-slate-200 rounded-lg focus:border-indigo-600 focus:outline-none bg-white font-medium"
+                    >
+                      <option value="Mother">Mother</option>
+                      <option value="Father">Father</option>
+                      <option value="Grandmother">Grandmother</option>
+                      <option value="Grandfather">Grandfather</option>
+                      <option value="Spouse">Spouse</option>
+                      <option value="Other Family Member">Other Family Member</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="dep-assist" className="block text-xs font-bold text-slate-700 mb-1">
+                      Special Clinic Assistance Needed:
+                    </label>
+                    <select
+                      id="dep-assist"
+                      value={mobilityAssistance}
+                      onChange={(e) => setMobilityAssistance(e.target.value)}
+                      className="w-full p-2.5 text-sm border-2 border-slate-200 rounded-lg focus:border-indigo-600 focus:outline-none bg-white font-medium"
+                    >
+                      <option value="None">None / Standard visit</option>
+                      <option value="Wheelchair required at clinic entrance">♿ Wheelchair required at entrance</option>
+                      <option value="Hard of hearing (Doctor should speak clearly)">👂 Hard of hearing (Speak clearly)</option>
+                      <option value="Ground floor or elevator access required">🦯 Walking assistance / Lift needed</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
           {/* Optional Health Notes */}
           <div className="mb-8">
             <label htmlFor="patient-notes" className="block text-sm font-bold text-slate-900 mb-2">
@@ -636,6 +786,26 @@ export const BookingWizardPage = () => {
                 </span>
               </div>
             </div>
+
+            {/* Caregiver Proxy Consultation Info if applicable */}
+            {confirmedBooking.bookingFor === 'dependent' && confirmedBooking.dependentName && (
+              <div className="bg-indigo-100/70 p-3.5 rounded-xl border border-indigo-200 text-xs sm:text-sm text-indigo-950 flex items-start gap-2.5">
+                <Users className="w-4 h-4 text-indigo-700 flex-shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold block text-xs uppercase tracking-wider text-indigo-800">
+                    Consultation For Family Member
+                  </span>
+                  <p className="font-semibold text-slate-900 mt-0.5">
+                    {confirmedBooking.dependentName} ({confirmedBooking.dependentRelation}, Age: {confirmedBooking.dependentAge || 'Senior'})
+                  </p>
+                  {confirmedBooking.mobilityAssistance && confirmedBooking.mobilityAssistance !== 'None' && (
+                    <p className="text-xs text-indigo-700 font-medium mt-0.5">
+                      Special Clinic Note: {confirmedBooking.mobilityAssistance}
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
 
             <div className="pt-4 border-t border-slate-200 flex justify-between items-center text-sm">
               <span className="text-slate-600">Consultation Fee</span>

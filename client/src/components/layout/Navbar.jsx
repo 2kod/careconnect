@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { HeartPulse, Calendar, User, LogOut, Menu, X, Stethoscope, SlidersHorizontal } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { useAccessibility } from '../../context/AccessibilityContext';
 import AccessibleButton from '../common/AccessibleButton';
 
 export const Navbar = () => {
   const { user, logout, isAuthenticated } = useAuth();
+  const { t } = useAccessibility();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -60,7 +62,7 @@ export const Navbar = () => {
                   : 'text-slate-700 hover:text-indigo-700 hover:bg-slate-50'
               }`}
             >
-              Find Doctors
+              {t('find_doctors')}
             </Link>
 
             <Link
@@ -72,18 +74,7 @@ export const Navbar = () => {
               }`}
             >
               <Calendar className="w-4 h-4 text-indigo-600 flex-shrink-0" aria-hidden="true" />
-              <span>My Appointments</span>
-            </Link>
-
-            <Link
-              to="/accessibility-settings"
-              className={`whitespace-nowrap px-3.5 py-2 rounded-xl font-semibold text-sm xl:text-base transition-colors ${
-                isActive('/accessibility-settings')
-                  ? 'bg-indigo-50 text-indigo-700 font-bold border border-indigo-200'
-                  : 'text-slate-700 hover:text-indigo-700 hover:bg-slate-50'
-              }`}
-            >
-              Accessibility Settings
+              <span>{t('my_appointments')}</span>
             </Link>
           </nav>
 
@@ -104,7 +95,7 @@ export const Navbar = () => {
                     {user?.fullName ? user.fullName[0].toUpperCase() : <User className="w-3.5 h-3.5" />}
                   </div>
                   <span className="whitespace-nowrap font-bold">
-                    My Profile
+                    {t('my_profile')}
                   </span>
                 </Link>
 
@@ -116,19 +107,19 @@ export const Navbar = () => {
                   ariaLabel="Sign out of your CareConnect account"
                   className="whitespace-nowrap"
                 >
-                  Sign Out
+                  {t('sign_out')}
                 </AccessibleButton>
               </div>
             ) : (
               <div className="flex items-center gap-2.5 whitespace-nowrap">
                 <Link to="/login">
                   <AccessibleButton variant="ghost" size="md" className="whitespace-nowrap font-bold text-slate-700">
-                    Sign In
+                    {t('sign_in')}
                   </AccessibleButton>
                 </Link>
                 <Link to="/register">
                   <AccessibleButton variant="primary" size="md" className="whitespace-nowrap font-bold shadow-sm">
-                    Register
+                    {t('register')}
                   </AccessibleButton>
                 </Link>
               </div>
@@ -167,13 +158,6 @@ export const Navbar = () => {
             className="block px-4 py-3 rounded-xl font-bold text-base text-slate-800 hover:bg-indigo-50 hover:text-indigo-800 transition-colors"
           >
             My Appointments
-          </Link>
-          <Link
-            to="/accessibility-settings"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-4 py-3 rounded-xl font-bold text-base text-slate-800 hover:bg-indigo-50 hover:text-indigo-800 transition-colors"
-          >
-            Accessibility Settings
           </Link>
           {isAuthenticated && (
             <Link

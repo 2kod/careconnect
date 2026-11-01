@@ -6,6 +6,7 @@ import {
   Search, 
   ShieldCheck, 
   Volume2, 
+  VolumeX,
   Clock, 
   Users, 
   ArrowRight, 
@@ -32,7 +33,7 @@ const specIconMap = {
 };
 
 export const HomePage = () => {
-  const { speak } = useAccessibility();
+  const { t } = useAccessibility();
   const [specializations, setSpecializations] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -52,12 +53,6 @@ export const HomePage = () => {
     fetchSpecializations();
   }, []);
 
-  const handleReadIntro = () => {
-    speak(
-      'Welcome to CareConnect. We are here to make finding and booking a doctor gentle, unhurried, and easy for you and your family. You can look through our doctors, pick a day and time that suits your routine, and listen to any page read aloud whenever you wish.'
-    );
-  };
-
   return (
     <main id="main-content" className="focus:outline-none">
       
@@ -69,38 +64,22 @@ export const HomePage = () => {
             {/* Pill Header */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-100 text-indigo-900 text-sm font-bold border border-indigo-200 mb-6 shadow-sm">
               <Heart className="w-4 h-4 text-indigo-600 fill-indigo-600" aria-hidden="true" />
-              <span>Compassionate Care for You & Your Loved Ones</span>
+              <span>{t('compassionate_pill')}</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-6">
-              Doctor visits made gentle, unhurried, and simple.
+              {t('hero_title')}
             </h1>
 
             <p className="text-lg md:text-xl text-slate-700 leading-relaxed mb-8">
-              When you or an elderly family member need to see a doctor, technology should feel like a helping hand — not a puzzle. CareConnect is built with calm screens, big readable letters, and friendly voice guidance so you can book care with total peace of mind.
+              {t('hero_subtitle')}
             </p>
 
-            {/* Quick Action Buttons */}
+            {/* Quick Action Button */}
             <div className="flex flex-wrap items-center gap-4">
               <Link to="/doctors">
                 <AccessibleButton size="lg" icon={Search} className="shadow-md">
-                  Find a Caring Doctor
-                </AccessibleButton>
-              </Link>
-
-              <AccessibleButton
-                variant="outline"
-                size="lg"
-                icon={Volume2}
-                onClick={handleReadIntro}
-                ariaLabel="Listen to audio overview of CareConnect"
-              >
-                Listen to Voice Guide
-              </AccessibleButton>
-
-              <Link to="/accessibility-settings">
-                <AccessibleButton variant="secondary" size="lg">
-                  Adjust Text & Display
+                  {t('hero_find_doctor_btn')}
                 </AccessibleButton>
               </Link>
             </div>
@@ -109,15 +88,15 @@ export const HomePage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12 pt-8 border-t border-slate-200 text-sm text-slate-700">
               <div className="flex items-center gap-2.5 font-bold">
                 <HeartHandshake className="w-5 h-5 text-indigo-600 flex-shrink-0" />
-                <span>Doctors who take time to listen</span>
+                <span>{t('hero_badge_listen')}</span>
               </div>
               <div className="flex items-center gap-2.5 font-bold">
                 <Clock className="w-5 h-5 text-indigo-600 flex-shrink-0" />
-                <span>Clear, unhurried timings</span>
+                <span>{t('hero_badge_timings')}</span>
               </div>
               <div className="flex items-center gap-2.5 font-bold">
                 <ShieldCheck className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                <span>Easy mistake recovery & free changes</span>
+                <span>{t('hero_badge_changes')}</span>
               </div>
             </div>
 
@@ -130,14 +109,14 @@ export const HomePage = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
-              What kind of care do you or your family need?
+              {t('categories_title')}
             </h2>
             <p className="text-slate-600 text-base mt-1">
-              Select an area of care below, or search for a trusted physician by name.
+              {t('categories_subtitle')}
             </p>
           </div>
           <Link to="/doctors" className="text-indigo-700 font-bold hover:underline flex items-center gap-1.5 text-base">
-            <span>View All Doctors</span>
+            <span>{t('view_all_doctors')}</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

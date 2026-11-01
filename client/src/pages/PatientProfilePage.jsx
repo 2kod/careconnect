@@ -12,6 +12,7 @@ import {
   Save, 
   LogOut, 
   Volume2, 
+  VolumeX,
   Clock 
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -21,7 +22,7 @@ import AccessibleButton from '../components/common/AccessibleButton';
 
 export const PatientProfilePage = () => {
   const { user, logout, isAuthenticated, loading: authLoading } = useAuth();
-  const { fontSize, highContrast, speak, announce } = useAccessibility();
+  const { fontSize, highContrast, speak, stopSpeaking, isSpeaking, announce } = useAccessibility();
   const navigate = useNavigate();
 
   const [fullName, setFullName] = useState('');
@@ -76,7 +77,6 @@ export const PatientProfilePage = () => {
       if (res.success) {
         setSaveSuccess('Your profile details have been saved successfully.');
         announce('Profile updated successfully.');
-        speak('Your profile has been updated.');
       }
     } catch (err) {
       setSaveError(err.message || 'Failed to update profile.');
@@ -84,12 +84,6 @@ export const PatientProfilePage = () => {
     } finally {
       setSaving(false);
     }
-  };
-
-  const handleReadProfile = () => {
-    speak(
-      `Your profile for ${fullName}. Email is ${email}. You currently have ${appointmentCounts.upcoming} upcoming appointments scheduled.`
-    );
   };
 
   if (authLoading) {
@@ -138,7 +132,7 @@ export const PatientProfilePage = () => {
     <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 focus:outline-none">
       
       {/* Top Breadcrumb & Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+      <div className="mb-8">
         <div>
           <span className="text-xs uppercase tracking-wider font-bold text-indigo-700 bg-indigo-100 px-2.5 py-1 rounded-md">
             My Account
@@ -150,16 +144,6 @@ export const PatientProfilePage = () => {
             Manage your personal healthcare contact details and consultation settings.
           </p>
         </div>
-
-        <AccessibleButton
-          variant="outline"
-          size="sm"
-          icon={Volume2}
-          onClick={handleReadProfile}
-          ariaLabel="Read my profile details aloud"
-        >
-          Read Profile Aloud
-        </AccessibleButton>
       </div>
 
       {/* Notifications */}
